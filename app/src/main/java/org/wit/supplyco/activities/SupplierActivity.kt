@@ -1,16 +1,16 @@
-package org.wit.supplyco
+package org.wit.supplyco.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import org.wit.supplyco.R
 import timber.log.Timber
-import timber.log.Timber.i
 
-class MainActivity : AppCompatActivity() {
+class SupplierActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         Timber.plant(Timber.DebugTree())
-        i("Main Activity started..")
+        Timber.i("Main Activity started..")
     }
 }
