@@ -3,6 +3,7 @@
         xmlns:tools="http://schemas.android.com/tools">
 
     <application
+            android:name="org.wit.supplyco.main.MainApp"
             android:allowBackup="true"
             android:dataExtractionRules="@xml/data_extraction_rules"
             android:fullBackupContent="@xml/backup_rules"
@@ -12,7 +13,7 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.SupplyCo">
         <activity
-                android:name=".activities.MainActivity"
+                android:name=".activities.SupplierActivity"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
