@@ -72,15 +72,8 @@
 
                 <Button
                         android:id="@+id/buttonAddSupplier"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="20dp"
-                        android:background="@drawable/rounded_rectangles"
-                        android:padding="8dp"
-                        android:stateListAnimator="@null"
                         android:text="@string/button_addSupplier"
-                        android:textColor="@color/WindsorTan"
-                        android:textSize="20sp" />
+                        style="@style/Button" />
             </LinearLayout>
         </ScrollView>
 
