@@ -11,13 +11,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/white">
 
         <com.google.android.material.appbar.AppBarLayout
                 android:id="@+id/appBarLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/SandyTan"
+                android:background="@color/DarkCerulean"
                 android:fitsSystemWindows="true"
                 app:elevation="0dip"
                 app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -26,7 +27,7 @@
                     android:id="@+id/toolbarAdd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:titleTextColor="@color/CadmiumOrange" >
+                    app:titleTextColor="@color/SmokeyBlack" >
 
                 <TextView
                         android:text="@string/toolbar_title_add_supplier"
