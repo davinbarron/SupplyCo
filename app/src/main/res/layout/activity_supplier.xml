@@ -1,19 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/main"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activities.SupplierActivity">
+        tools:context="org.wit.supplyco.activities.SupplierActivity">
 
-    <TextView
-            android:layout_width="wrap_content"
+    <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hello World!"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
+        <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/SandyTan"
+                android:fitsSystemWindows="true"
+                app:elevation="0dip"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbarAdd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:titleTextColor="@color/CadmiumOrange" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/appBarLayout"
+                android:fillViewport="true">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <EditText
+                        android:id="@+id/supplierName"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_margin="8dp"
+                        android:autofillHints="hint"
+                        android:hint="@string/hint_supplierName"
+                        android:inputType="text"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:padding="8dp"
+                        android:textColor="@color/TraditionalBrown"
+                        android:textSize="16sp" />
+
+                <EditText
+                        android:id="@+id/supplierDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_margin="8dp"
+                        android:autofillHints="hint"
+                        android:hint="@string/hint_supplierDescription"
+                        android:inputType="text"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:padding="8dp"
+                        android:textColor="@color/TraditionalBrown"
+                        android:textSize="16sp" />
+
+                <EditText
+                        android:id="@+id/supplierContact"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_margin="8dp"
+                        android:autofillHints="hint"
+                        android:hint="@string/hint_supplierContact"
+                        android:inputType="text"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:padding="8dp"
+                        android:textColor="@color/TraditionalBrown"
+                        android:textSize="16sp" />
+
+                <EditText
+                        android:id="@+id/supplierEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_margin="8dp"
+                        android:autofillHints="hint"
+                        android:hint="@string/hint_supplierEmail"
+                        android:inputType="text"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:padding="8dp"
+                        android:textColor="@color/TraditionalBrown"
+                        android:textSize="16sp" />
+
+                <EditText
+                        android:id="@+id/supplierAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_margin="8dp"
+                        android:autofillHints="hint"
+                        android:hint="@string/hint_supplierAddress"
+                        android:inputType="text"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:padding="8dp"
+                        android:textColor="@color/TraditionalBrown"
+                        android:textSize="16sp" />
+
+                <Button
+                        android:id="@+id/buttonAddSupplier"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:background="@color/SandyTan"
+                        android:padding="8dp"
+                        android:stateListAnimator="@null"
+                        android:text="@string/button_addSupplier"
+                        android:textColor="@color/TraditionalBrown"
+                        android:textSize="20sp" />
+            </LinearLayout>
+        </ScrollView>
+
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
