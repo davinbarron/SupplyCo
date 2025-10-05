@@ -48,63 +48,27 @@
 
                 <EditText
                         android:id="@+id/supplierDescription"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_margin="12dp"
                         android:autofillHints="hint"
                         android:hint="@string/hint_supplierDescription"
-                        android:inputType="text"
-                        android:maxLength="25"
-                        android:maxLines="1"
-                        android:padding="8dp"
-                        android:textColor="@color/WindsorTan"
-                        android:background="@drawable/rounded_rectangles"
-                        android:textSize="16sp" />
+                        style="@style/EditText" />
 
                 <EditText
                         android:id="@+id/supplierContact"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_margin="12dp"
                         android:autofillHints="hint"
                         android:hint="@string/hint_supplierContact"
-                        android:inputType="text"
-                        android:maxLength="25"
-                        android:maxLines="1"
-                        android:padding="8dp"
-                        android:textColor="@color/WindsorTan"
-                        android:background="@drawable/rounded_rectangles"
-                        android:textSize="16sp" />
+                        style="@style/EditText" />
 
                 <EditText
                         android:id="@+id/supplierEmail"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_margin="12dp"
                         android:autofillHints="hint"
                         android:hint="@string/hint_supplierEmail"
-                        android:inputType="text"
-                        android:maxLength="25"
-                        android:maxLines="1"
-                        android:padding="8dp"
-                        android:textColor="@color/WindsorTan"
-                        android:background="@drawable/rounded_rectangles"
-                        android:textSize="16sp" />
+                        style="@style/EditText" />
 
                 <EditText
                         android:id="@+id/supplierAddress"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_margin="12dp"
                         android:autofillHints="hint"
                         android:hint="@string/hint_supplierAddress"
-                        android:inputType="text"
-                        android:maxLength="25"
-                        android:maxLines="1"
-                        android:padding="8dp"
-                        android:textColor="@color/WindsorTan"
-                        android:background="@drawable/rounded_rectangles"
-                        android:textSize="16sp" />
+                        style="@style/EditText" />
 
                 <Button
                         android:id="@+id/buttonAddSupplier"
