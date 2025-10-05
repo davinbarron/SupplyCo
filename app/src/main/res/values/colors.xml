@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--Reference for the colour scheme I will be using for the app-->
+<!--Name: Brown-Tan Monochromatic Color Scheme-->
+<!--https://www.schemecolor.com/brown-tan-monochromatic.php-->
+
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="SandyTan">#FDD9B5</color>
+    <color name="MacaroniAndCheese">#FABE86</color>
+    <color name="CadmiumOrange">#ED8E30</color>
+    <color name="MustardBrown">#D77200</color>
+    <color name="WindsorTan">#B65900</color>
+    <color name="TraditionalBrown">#924400</color>
+    <color name="white">#FFFFFF</color>
 </resources>
