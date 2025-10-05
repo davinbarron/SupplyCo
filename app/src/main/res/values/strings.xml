@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">SupplyCo</string>
+    <string name="button_addSupplier">Add Supplier</string>
+    <string name="hint_supplierName">Supplier Name</string>
+    <string name="hint_supplierDescription">Supplier Description</string>
+    <string name="hint_supplierContact">Supplier Contact</string>
+    <string name="hint_supplierEmail">Supplier Email</string>
+    <string name="hint_supplierAddress">Supplier Address</string>
 </resources>
