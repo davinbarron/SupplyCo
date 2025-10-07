@@ -11,13 +11,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/white">
 
         <com.google.android.material.appbar.AppBarLayout
                 android:id="@+id/appBarLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/SandyTan"
+                android:background="@color/DarkCerulean"
                 android:fitsSystemWindows="true"
                 app:elevation="0dip"
                 app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -26,7 +27,14 @@
                     android:id="@+id/toolbarAdd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:titleTextColor="@color/CadmiumOrange" />
+                    app:titleTextColor="@color/SmokeyBlack" >
+
+                <TextView
+                        android:text="@string/toolbar_title_add_supplier"
+                        style="@style/ToolbarTextView" />
+
+            </androidx.appcompat.widget.Toolbar>
+
         </com.google.android.material.appbar.AppBarLayout>
 
         <ScrollView
@@ -42,85 +50,38 @@
 
                 <EditText
                         android:id="@+id/supplierName"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_margin="8dp"
                         android:autofillHints="hint"
                         android:hint="@string/hint_supplierName"
-                        android:inputType="text"
-                        android:maxLength="25"
-                        android:maxLines="1"
-                        android:padding="8dp"
-                        android:textColor="@color/TraditionalBrown"
-                        android:textSize="16sp" />
+                        style="@style/EditText" />
 
                 <EditText
                         android:id="@+id/supplierDescription"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_margin="8dp"
                         android:autofillHints="hint"
                         android:hint="@string/hint_supplierDescription"
-                        android:inputType="text"
-                        android:maxLength="25"
-                        android:maxLines="1"
-                        android:padding="8dp"
-                        android:textColor="@color/TraditionalBrown"
-                        android:textSize="16sp" />
+                        style="@style/EditText" />
 
                 <EditText
                         android:id="@+id/supplierContact"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_margin="8dp"
                         android:autofillHints="hint"
                         android:hint="@string/hint_supplierContact"
-                        android:inputType="text"
-                        android:maxLength="25"
-                        android:maxLines="1"
-                        android:padding="8dp"
-                        android:textColor="@color/TraditionalBrown"
-                        android:textSize="16sp" />
+                        style="@style/EditText" />
 
                 <EditText
                         android:id="@+id/supplierEmail"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_margin="8dp"
                         android:autofillHints="hint"
                         android:hint="@string/hint_supplierEmail"
-                        android:inputType="text"
-                        android:maxLength="25"
-                        android:maxLines="1"
-                        android:padding="8dp"
-                        android:textColor="@color/TraditionalBrown"
-                        android:textSize="16sp" />
+                        style="@style/EditText" />
 
                 <EditText
                         android:id="@+id/supplierAddress"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_margin="8dp"
                         android:autofillHints="hint"
                         android:hint="@string/hint_supplierAddress"
-                        android:inputType="text"
-                        android:maxLength="25"
-                        android:maxLines="1"
-                        android:padding="8dp"
-                        android:textColor="@color/TraditionalBrown"
-                        android:textSize="16sp" />
+                        style="@style/EditText" />
 
                 <Button
                         android:id="@+id/buttonAddSupplier"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="16dp"
-                        android:background="@color/SandyTan"
-                        android:padding="8dp"
-                        android:stateListAnimator="@null"
                         android:text="@string/button_addSupplier"
-                        android:textColor="@color/TraditionalBrown"
-                        android:textSize="20sp" />
+                        style="@style/Button" />
             </LinearLayout>
         </ScrollView>
 

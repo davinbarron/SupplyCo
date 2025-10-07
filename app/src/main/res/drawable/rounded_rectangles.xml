@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--Creating shape resource rectangle for UI-->
+<!--https://developer.android.com/guide/topics/resources/drawable-resource#Shape-->
+
+<shape
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:shape="rectangle">
+
+    <corners android:radius="10dp" />
+    <gradient
+            android:startColor="@color/white"
+            android:endColor="@color/white"
+            android:angle="90"/>
+    <stroke
+            android:width="1dp"
+            android:color="#000000"/>
+
+</shape>

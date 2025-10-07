@@ -6,4 +6,5 @@
     <string name="hint_supplierContact">Supplier Contact</string>
     <string name="hint_supplierEmail">Supplier Email</string>
     <string name="hint_supplierAddress">Supplier Address</string>
+    <string name="toolbar_title_add_supplier">Add New Suppliers</string>
 </resources>
