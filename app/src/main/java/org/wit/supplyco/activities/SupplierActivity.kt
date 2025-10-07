@@ -66,7 +66,7 @@ class SupplierActivity : AppCompatActivity() {
             }
             else {
                 Snackbar
-                    .make(it,"Please Enter a name", Snackbar.LENGTH_LONG)
+                    .make(it,"Please fill in all fields", Snackbar.LENGTH_LONG)
                     .show()
             }
         }
