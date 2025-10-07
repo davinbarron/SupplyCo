@@ -1,6 +1,7 @@
 package org.wit.supplyco.activities
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import org.wit.supplyco.databinding.ActivitySupplierBinding
@@ -45,6 +46,11 @@ class SupplierActivity : AppCompatActivity() {
                 // Add copy to the ArrayList and log
                 app.suppliers.add(supplier.copy())
                 i("Add Button Pressed: $supplier'")
+
+                // User Feedback using Toast
+                Toast
+                    .makeText(this, "Supplier added successfully!", Toast.LENGTH_SHORT)
+                    .show()
 
                 // Log all suppliers
                 for (i in app.suppliers.indices) {
