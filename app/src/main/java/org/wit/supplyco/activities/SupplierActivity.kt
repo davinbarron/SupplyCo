@@ -56,6 +56,13 @@ class SupplierActivity : AppCompatActivity() {
                 for (i in app.suppliers.indices) {
                     i("supplier[$i]:${this.app.suppliers[i]}")
                 }
+
+                // Clear the text fields
+                binding.supplierName.text.clear()
+                binding.supplierDescription.text.clear()
+                binding.supplierContact.text.clear()
+                binding.supplierEmail.text.clear()
+                binding.supplierAddress.text.clear()
             }
             else {
                 Snackbar
