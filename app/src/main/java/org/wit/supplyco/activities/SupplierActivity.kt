@@ -57,6 +57,9 @@ class SupplierActivity : AppCompatActivity() {
                     i("supplier[$i]:${this.app.suppliers[i]}")
                 }
 
+                setResult(RESULT_OK)
+                finish()
+
                 // Clear the text fields
                 binding.supplierName.text.clear()
                 binding.supplierDescription.text.clear()
