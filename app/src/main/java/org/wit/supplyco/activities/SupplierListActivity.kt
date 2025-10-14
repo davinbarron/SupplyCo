@@ -21,6 +21,8 @@ class SupplierListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySupplierListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.toolbar.title = title
+        setSupportActionBar(binding.toolbar)
 
         app = application as MainApp
 
