@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/supplierCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="10dp">
+
+    <LinearLayout
+            android:background="@drawable/rounded_rectangles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+        <TextView
+                android:id="@+id/supplierName"
+                tools:text="Supplier Name"
+                style="@style/HeadingTextView" />
+
+        <TextView
+                android:id="@+id/supplierDescription"
+                tools:text="Description"
+                style="@style/DescriptionTextView" />
+
+        <TextView
+                android:id="@+id/supplierContact"
+                tools:text="Contact"
+                style="@style/DescriptionTextView" />
+
+        <TextView
+                android:id="@+id/supplierEmail"
+                tools:text="Email"
+                style="@style/DescriptionTextView" />
+
+        <TextView
+                android:id="@+id/supplierAddress"
+                tools:text="Address"
+                style="@style/DescriptionTextView" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
