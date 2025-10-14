@@ -1,9 +1,11 @@
 package org.wit.supplyco.activities
 
 import android.os.Bundle
+import android.view.Menu
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
+import org.wit.supplyco.R
 import org.wit.supplyco.databinding.ActivitySupplierBinding
 import org.wit.supplyco.main.MainApp
 import org.wit.supplyco.models.SupplierModel
@@ -74,4 +76,10 @@ class SupplierActivity : AppCompatActivity() {
             }
         }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_supplier, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
 }
