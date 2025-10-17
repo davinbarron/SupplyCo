@@ -42,6 +42,10 @@ class SupplierListActivity : AppCompatActivity() {
                 val launcherIntent = Intent(this, SupplierActivity::class.java)
                 getResult.launch(launcherIntent)
             }
+            R.id.item_settings -> {
+                val settingsIntent = Intent(this, SettingsActivity::class.java)
+                getResult.launch(settingsIntent)
+            }
         }
         return super.onOptionsItemSelected(item)
     }
