@@ -50,6 +50,13 @@ class SupplierListActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    // onResume() ensures the adapter reflects the current state of the suppliers array list
+    // called when we navigate back to the suppliers list
+    override fun onResume() {
+        super.onResume()
+        binding.recyclerView.adapter = SupplierAdapter(app.suppliers)
+    }
+
     private val getResult =
         registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
