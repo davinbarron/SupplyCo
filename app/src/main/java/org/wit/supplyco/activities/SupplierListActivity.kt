@@ -42,8 +42,19 @@ class SupplierListActivity : AppCompatActivity() {
                 val launcherIntent = Intent(this, SupplierActivity::class.java)
                 getResult.launch(launcherIntent)
             }
+            R.id.item_settings -> {
+                val settingsIntent = Intent(this, SettingsActivity::class.java)
+                getResult.launch(settingsIntent)
+            }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    // onResume() ensures the adapter reflects the current state of the suppliers array list
+    // called when we navigate back to the suppliers list
+    override fun onResume() {
+        super.onResume()
+        binding.recyclerView.adapter = SupplierAdapter(app.suppliers)
     }
 
     private val getResult =
