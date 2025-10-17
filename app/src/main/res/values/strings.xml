@@ -10,4 +10,6 @@
     <string name="toolbar_title_supplier_list">Suppliers</string>
     <string name="menu_addSupplier">Add</string>
     <string name="menu_cancelSupplier">Cancel</string>
+    <string name="delete_allSuppliers">Delete All Suppliers</string>
+    <string name="toolbar_title_settings">Settings</string>
 </resources>
