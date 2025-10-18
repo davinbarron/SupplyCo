@@ -1,5 +1,9 @@
 package org.wit.supplyco.models
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class SupplierModel (
     var name: String = "",
     var description: String = "",
