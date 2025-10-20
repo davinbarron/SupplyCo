@@ -47,18 +47,15 @@ class SupplierActivity : AppCompatActivity() {
         binding.buttonAddSupplier.setOnClickListener() {
 
             // Binding the supplier data model to UI elements
-            supplier.name = binding.supplierName.text.toString()
-            supplier.description = binding.supplierDescription.text.toString()
-            supplier.contact = binding.supplierContact.text.toString()
-            supplier.email = binding.supplierEmail.text.toString()
-            supplier.address = binding.supplierAddress.text.toString()
+            supplier.apply {
+                name = binding.supplierName.text.toString()
+                description = binding.supplierDescription.text.toString()
+                contact = binding.supplierContact.text.toString()
+                email = binding.supplierEmail.text.toString()
+                address = binding.supplierAddress.text.toString()
+            }
 
-            // Some simple validation
-            if (supplier.name.isNotEmpty()
-                && supplier.description.isNotEmpty()
-                && supplier.contact.isNotEmpty()
-                && supplier.email.isNotEmpty()
-                && supplier.address.isNotEmpty()) {
+            if (isValidSupplier()) {
 
                 if (intent.hasExtra("supplier_edit")) {
                     app.suppliers.update(supplier.copy())
@@ -102,6 +99,14 @@ class SupplierActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun isValidSupplier(): Boolean {
+        return supplier.name.isNotEmpty() &&
+                supplier.description.isNotEmpty() &&
+                supplier.contact.isNotEmpty() &&
+                supplier.email.isNotEmpty() &&
+                supplier.address.isNotEmpty()
     }
 
 }
