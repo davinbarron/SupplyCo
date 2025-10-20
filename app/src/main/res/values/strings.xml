@@ -7,7 +7,8 @@
     <string name="hint_supplierContact">Supplier Contact</string>
     <string name="hint_supplierEmail">Supplier Email</string>
     <string name="hint_supplierAddress">Supplier Address</string>
-    <string name="toolbar_title_add_supplier">Add New Suppliers</string>
+    <string name="toolbar_title_add_supplier">Add New Supplier</string>
+    <string name="toolbar_title_supplier_details">Supplier Details</string>
     <string name="toolbar_title_supplier_list">Suppliers</string>
     <string name="menu_addSupplier">Add</string>
     <string name="menu_cancelSupplier">Cancel</string>

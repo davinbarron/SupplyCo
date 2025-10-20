@@ -33,6 +33,7 @@ class SupplierActivity : AppCompatActivity() {
         if (intent.hasExtra("supplier_edit")) {
             supplier = intent.extras?.getParcelable("supplier_edit")!!
             binding.buttonAddSupplier.text = getString(R.string.button_saveSupplier)
+            binding.supplierActivityTitle.text = getString(R.string.toolbar_title_supplier_details)
 
             // Populating the form with the selected suppliers details when the intention is to edit a supplier
             binding.supplierName.setText(supplier.name)
@@ -42,6 +43,7 @@ class SupplierActivity : AppCompatActivity() {
             binding.supplierAddress.setText(supplier.address)
         } else {
             binding.buttonAddSupplier.text = getString(R.string.button_addSupplier)
+            binding.supplierActivityTitle.text = getString(R.string.toolbar_title_add_supplier)
         }
 
         binding.buttonAddSupplier.setOnClickListener() {
