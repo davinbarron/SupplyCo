@@ -30,7 +30,7 @@ class SupplierListActivity : AppCompatActivity(), SupplierListener {
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = SupplierAdapter(app.suppliers.findAll(), this)
+        refreshList()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -56,7 +56,7 @@ class SupplierListActivity : AppCompatActivity(), SupplierListener {
     // called when we navigate back to the suppliers list
     override fun onResume() {
         super.onResume()
-        binding.recyclerView.adapter = SupplierAdapter(app.suppliers.findAll(), this)
+        refreshList()
     }
 
     override fun onSupplierClick(supplier: SupplierModel) {
@@ -69,9 +69,11 @@ class SupplierListActivity : AppCompatActivity(), SupplierListener {
             ActivityResultContracts.StartActivityForResult()
         ) {
             if (it.resultCode == RESULT_OK) {
-                (binding.recyclerView.adapter)?.
-                notifyItemRangeChanged(0,app.suppliers.findAll().size)
+                refreshList()
             }
         }
 
+    private fun refreshList() {
+        binding.recyclerView.adapter = SupplierAdapter(app.suppliers.findAll(), this)
+    }
 }
