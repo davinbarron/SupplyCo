@@ -5,7 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class SupplierModel (
-    var supplierId: Long = 0,
+    var id: Long = 0,
     var name: String = "",
     var description: String = "",
     var contact: String = "",
