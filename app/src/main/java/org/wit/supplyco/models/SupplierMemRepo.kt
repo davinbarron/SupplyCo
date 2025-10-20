@@ -2,10 +2,10 @@ package org.wit.supplyco.models
 
 import timber.log.Timber.i
 
-var id = 0L
+var supplierId = 0L
 
 internal fun getId(): Long {
-    return id++
+    return supplierId ++
 }
 
 class SupplierMemRepo : SupplierRepo {
@@ -23,7 +23,7 @@ class SupplierMemRepo : SupplierRepo {
     }
 
     override fun update(supplier: SupplierModel) {
-        var foundSupplier: SupplierModel? = suppliers.find { s -> s.id == supplier.id }
+        val foundSupplier: SupplierModel? = suppliers.find { s -> s.id == supplier.id }
         if (foundSupplier != null) {
             foundSupplier.name = supplier.name
             foundSupplier.description = supplier.description

@@ -47,18 +47,13 @@ class SupplierActivity : AppCompatActivity() {
                 && supplier.address.isNotEmpty()) {
 
                 // Add copy to the ArrayList and log
-                app.suppliers.add(supplier.copy())
+                app.suppliers.create(supplier.copy())
                 i("Add Button Pressed: $supplier'")
 
                 // User Feedback using Toast
                 Toast
                     .makeText(this, "Supplier added successfully!", Toast.LENGTH_SHORT)
                     .show()
-
-                // Log all suppliers
-                for (i in app.suppliers.indices) {
-                    i("supplier[$i]:${this.app.suppliers[i]}")
-                }
 
                 setResult(RESULT_OK)
                 finish()

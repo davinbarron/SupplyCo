@@ -9,10 +9,12 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.wit.supplyco.R
 import org.wit.supplyco.adapters.SupplierAdapter
+import org.wit.supplyco.adapters.SupplierListener
 import org.wit.supplyco.databinding.ActivitySupplierListBinding
 import org.wit.supplyco.main.MainApp
+import org.wit.supplyco.models.SupplierModel
 
-class SupplierListActivity : AppCompatActivity() {
+class SupplierListActivity : AppCompatActivity(), SupplierListener {
 
     lateinit var app: MainApp
     private lateinit var binding: ActivitySupplierListBinding
@@ -28,7 +30,7 @@ class SupplierListActivity : AppCompatActivity() {
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = SupplierAdapter(app.suppliers)
+        binding.recyclerView.adapter = SupplierAdapter(app.suppliers.findAll(), this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -54,7 +56,12 @@ class SupplierListActivity : AppCompatActivity() {
     // called when we navigate back to the suppliers list
     override fun onResume() {
         super.onResume()
-        binding.recyclerView.adapter = SupplierAdapter(app.suppliers)
+        binding.recyclerView.adapter = SupplierAdapter(app.suppliers.findAll(), this)
+    }
+
+    override fun onSupplierClick(supplier: SupplierModel) {
+        val launcherIntent = Intent(this, SupplierActivity::class.java)
+        getResult.launch(launcherIntent)
     }
 
     private val getResult =
@@ -63,7 +70,7 @@ class SupplierListActivity : AppCompatActivity() {
         ) {
             if (it.resultCode == RESULT_OK) {
                 (binding.recyclerView.adapter)?.
-                notifyItemRangeChanged(0,app.suppliers.size)
+                notifyItemRangeChanged(0,app.suppliers.findAll().size)
             }
         }
 

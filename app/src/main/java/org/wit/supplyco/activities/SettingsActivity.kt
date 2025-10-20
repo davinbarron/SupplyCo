@@ -29,9 +29,9 @@ class SettingsActivity : AppCompatActivity() {
 
             i("Delete All button pressed")
 
-            app.suppliers.clear()
+            app.suppliers.deleteAll()
 
-            i("${app.suppliers.size} suppliers in the list")
+            i("${app.suppliers.findAll().size} suppliers in the list")
 
             Toast
                 .makeText(this, "All suppliers deleted", Toast.LENGTH_SHORT)
