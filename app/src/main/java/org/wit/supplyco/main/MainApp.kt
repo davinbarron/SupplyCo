@@ -1,13 +1,13 @@
 package org.wit.supplyco.main
 
 import android.app.Application
-import org.wit.supplyco.models.SupplierModel
+import org.wit.supplyco.models.SupplierMemRepo
 import timber.log.Timber
 import timber.log.Timber.i
 
 class MainApp : Application() {
 
-    val suppliers = ArrayList<SupplierModel>()
+    val suppliers = SupplierMemRepo()
 
     override fun onCreate() {
         super.onCreate()

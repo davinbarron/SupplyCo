@@ -30,34 +30,45 @@ class SupplierActivity : AppCompatActivity() {
         app = application as MainApp
         i("Supplier Activity started..")
 
+        if (intent.hasExtra("supplier_edit")) {
+            supplier = intent.extras?.getParcelable("supplier_edit")!!
+            binding.buttonAddSupplier.text = getString(R.string.button_saveSupplier)
+            binding.supplierActivityTitle.text = getString(R.string.toolbar_title_supplier_details)
+
+            // Populating the form with the selected suppliers details when the intention is to edit a supplier
+            binding.supplierName.setText(supplier.name)
+            binding.supplierDescription.setText(supplier.description)
+            binding.supplierContact.setText(supplier.contact)
+            binding.supplierEmail.setText(supplier.email)
+            binding.supplierAddress.setText(supplier.address)
+        } else {
+            binding.buttonAddSupplier.text = getString(R.string.button_addSupplier)
+            binding.supplierActivityTitle.text = getString(R.string.toolbar_title_add_supplier)
+        }
+
         binding.buttonAddSupplier.setOnClickListener() {
 
             // Binding the supplier data model to UI elements
-            supplier.name = binding.supplierName.text.toString()
-            supplier.description = binding.supplierDescription.text.toString()
-            supplier.contact = binding.supplierContact.text.toString()
-            supplier.email = binding.supplierEmail.text.toString()
-            supplier.address = binding.supplierAddress.text.toString()
+            supplier.apply {
+                name = binding.supplierName.text.toString()
+                description = binding.supplierDescription.text.toString()
+                contact = binding.supplierContact.text.toString()
+                email = binding.supplierEmail.text.toString()
+                address = binding.supplierAddress.text.toString()
+            }
 
-            // Some simple validation
-            if (supplier.name.isNotEmpty()
-                && supplier.description.isNotEmpty()
-                && supplier.contact.isNotEmpty()
-                && supplier.email.isNotEmpty()
-                && supplier.address.isNotEmpty()) {
+            if (isValidSupplier()) {
 
-                // Add copy to the ArrayList and log
-                app.suppliers.add(supplier.copy())
-                i("Add Button Pressed: $supplier'")
+                if (intent.hasExtra("supplier_edit")) {
+                    app.suppliers.update(supplier.copy())
 
-                // User Feedback using Toast
-                Toast
-                    .makeText(this, "Supplier added successfully!", Toast.LENGTH_SHORT)
-                    .show()
+                    Toast.makeText(this, getString(R.string.supplier_updated), Toast.LENGTH_SHORT)
+                        .show()
+                } else {
+                    app.suppliers.create(supplier.copy())
 
-                // Log all suppliers
-                for (i in app.suppliers.indices) {
-                    i("supplier[$i]:${this.app.suppliers[i]}")
+                    Toast.makeText(this, getString(R.string.supplier_added), Toast.LENGTH_SHORT)
+                        .show()
                 }
 
                 setResult(RESULT_OK)
@@ -72,7 +83,7 @@ class SupplierActivity : AppCompatActivity() {
             }
             else {
                 Snackbar
-                    .make(it,"Please fill in all fields", Snackbar.LENGTH_LONG)
+                    .make(it,getString(R.string.supplier_field_warning), Snackbar.LENGTH_LONG)
                     .show()
             }
         }
@@ -90,6 +101,14 @@ class SupplierActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun isValidSupplier(): Boolean {
+        return supplier.name.isNotEmpty() &&
+                supplier.description.isNotEmpty() &&
+                supplier.contact.isNotEmpty() &&
+                supplier.email.isNotEmpty() &&
+                supplier.address.isNotEmpty()
     }
 
 }

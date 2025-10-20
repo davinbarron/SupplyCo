@@ -30,6 +30,7 @@
                     app:titleTextColor="@color/SmokeyBlack" >
 
                 <TextView
+                        android:id="@+id/supplierActivityTitle"
                         android:text="@string/toolbar_title_add_supplier"
                         style="@style/ToolbarTextView" />
 
