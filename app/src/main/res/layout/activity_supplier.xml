@@ -31,6 +31,7 @@
 
                 <TextView
                         android:id="@+id/supplierActivityTitle"
+                        android:text="@string/toolbar_title_add_supplier"
                         style="@style/ToolbarTextView" />
 
             </androidx.appcompat.widget.Toolbar>
@@ -80,6 +81,7 @@
 
                 <Button
                         android:id="@+id/buttonAddSupplier"
+                        android:text="@string/button_addSupplier"
                         style="@style/Button" />
             </LinearLayout>
         </ScrollView>
