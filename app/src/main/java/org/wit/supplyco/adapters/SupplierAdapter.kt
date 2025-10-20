@@ -6,18 +6,29 @@ import androidx.recyclerview.widget.RecyclerView
 import org.wit.supplyco.databinding.CardSupplierBinding
 import org.wit.supplyco.models.SupplierModel
 
-class SupplierAdapter constructor(private var suppliers: List<SupplierModel>) :
+class SupplierAdapter constructor(
+    private var suppliers: List<SupplierModel>,
+    private val listener: SupplierListener
+) :
+
     RecyclerView.Adapter<SupplierAdapter.SupplierViewHolder>() {
 
     class SupplierViewHolder(private val binding : CardSupplierBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(supplier: SupplierModel) {
+        fun bind(
+            supplier: SupplierModel,
+            listener: SupplierListener
+        ) {
             binding.supplierName.text = supplier.name
             binding.supplierDescription.text = supplier.description
             binding.supplierContact.text = supplier.contact
             binding.supplierEmail.text = supplier.email
             binding.supplierAddress.text = supplier.address
+
+            binding.root.setOnClickListener {
+                listener.onSupplierClick(supplier)
+            }
         }
     }
 
@@ -30,7 +41,10 @@ class SupplierAdapter constructor(private var suppliers: List<SupplierModel>) :
 
     override fun onBindViewHolder(holder: SupplierViewHolder, position: Int) {
         val supplier = suppliers[holder.adapterPosition]
-        holder.bind(supplier)
+        holder.bind(
+            supplier,
+            listener
+        )
     }
 
     override fun getItemCount(): Int = suppliers.size
