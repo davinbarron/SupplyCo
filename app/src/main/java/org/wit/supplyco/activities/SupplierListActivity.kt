@@ -61,6 +61,7 @@ class SupplierListActivity : AppCompatActivity(), SupplierListener {
 
     override fun onSupplierClick(supplier: SupplierModel) {
         val launcherIntent = Intent(this, SupplierActivity::class.java)
+        launcherIntent.putExtra("supplier_edit", supplier)
         getResult.launch(launcherIntent)
     }
 
