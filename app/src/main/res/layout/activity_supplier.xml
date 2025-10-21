@@ -83,6 +83,13 @@
                         android:id="@+id/buttonAddSupplier"
                         android:text="@string/button_addSupplier"
                         style="@style/Button" />
+
+                <Button
+                        android:id="@+id/buttonDeleteSupplier"
+                        android:text="@string/button_deleteSupplier"
+                        style="@style/Button"
+                        android:backgroundTint="@color/red"
+                        android:visibility="gone" />
             </LinearLayout>
         </ScrollView>
 

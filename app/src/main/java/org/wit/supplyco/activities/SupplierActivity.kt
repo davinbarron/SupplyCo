@@ -3,6 +3,7 @@ package org.wit.supplyco.activities
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
@@ -34,6 +35,7 @@ class SupplierActivity : AppCompatActivity() {
             supplier = intent.extras?.getParcelable("supplier_edit")!!
             binding.buttonAddSupplier.text = getString(R.string.button_saveSupplier)
             binding.supplierActivityTitle.text = getString(R.string.toolbar_title_supplier_details)
+            binding.buttonDeleteSupplier.visibility = View.VISIBLE
 
             // Populating the form with the selected suppliers details when the intention is to edit a supplier
             binding.supplierName.setText(supplier.name)
@@ -44,6 +46,7 @@ class SupplierActivity : AppCompatActivity() {
         } else {
             binding.buttonAddSupplier.text = getString(R.string.button_addSupplier)
             binding.supplierActivityTitle.text = getString(R.string.toolbar_title_add_supplier)
+            binding.buttonDeleteSupplier.visibility = View.GONE
         }
 
         binding.buttonAddSupplier.setOnClickListener() {
@@ -86,6 +89,15 @@ class SupplierActivity : AppCompatActivity() {
                     .make(it,getString(R.string.supplier_field_warning), Snackbar.LENGTH_LONG)
                     .show()
             }
+        }
+
+        binding.buttonDeleteSupplier.setOnClickListener {
+            app.suppliers.delete(supplier)
+
+            Toast.makeText(this, getString(R.string.supplier_deleted), Toast.LENGTH_SHORT)
+                .show()
+            setResult(RESULT_OK)
+            finish()
         }
     }
 
