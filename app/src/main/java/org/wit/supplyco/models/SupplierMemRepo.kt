@@ -34,6 +34,14 @@ class SupplierMemRepo : SupplierRepo {
         }
     }
 
+    override fun delete(supplier: SupplierModel) {
+        val foundSupplier: SupplierModel? = suppliers.find { s -> s.id == supplier.id }
+        if (foundSupplier != null) {
+            suppliers.remove(foundSupplier)
+        }
+        logAll()
+    }
+
     override fun deleteAll() {
         suppliers.clear()
         logAll()
