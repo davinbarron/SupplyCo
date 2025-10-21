@@ -23,7 +23,7 @@ class SupplierMemRepo : SupplierRepo {
     }
 
     override fun update(supplier: SupplierModel) {
-        val foundSupplier: SupplierModel? = suppliers.find { s -> s.id == supplier.id }
+        val foundSupplier = findById(supplier.id)
         if (foundSupplier != null) {
             foundSupplier.name = supplier.name
             foundSupplier.description = supplier.description
@@ -35,7 +35,7 @@ class SupplierMemRepo : SupplierRepo {
     }
 
     override fun delete(supplier: SupplierModel) {
-        val foundSupplier: SupplierModel? = suppliers.find { s -> s.id == supplier.id }
+        val foundSupplier = findById(supplier.id)
         if (foundSupplier != null) {
             suppliers.remove(foundSupplier)
         }
@@ -49,5 +49,9 @@ class SupplierMemRepo : SupplierRepo {
 
     private fun logAll() {
         suppliers.forEach { i("$it") }
+    }
+
+    private fun findById(id: Long): SupplierModel? {
+        return suppliers.find { s -> s.id == id }
     }
 }
