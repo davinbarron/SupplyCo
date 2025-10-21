@@ -87,6 +87,14 @@ class SupplierActivity : AppCompatActivity() {
                     .show()
             }
         }
+
+        binding.buttonDeleteSupplier.setOnClickListener {
+            app.suppliers.delete(supplier)
+            Toast.makeText(this, getString(R.string.supplier_deleted), Toast.LENGTH_SHORT)
+                .show()
+            setResult(RESULT_OK)
+            finish()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
