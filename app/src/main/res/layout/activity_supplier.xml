@@ -88,7 +88,8 @@
                         android:id="@+id/buttonDeleteSupplier"
                         android:text="@string/button_deleteSupplier"
                         style="@style/Button"
-                        android:backgroundTint="@color/red" />
+                        android:backgroundTint="@color/red"
+                        android:visibility="gone" />
             </LinearLayout>
         </ScrollView>
 
