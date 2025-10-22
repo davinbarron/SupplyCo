@@ -5,6 +5,5 @@ interface SupplierRepo {
     fun create(supplier: SupplierModel)
     fun update(supplier: SupplierModel)
     fun delete(supplier: SupplierModel)
-
     fun deleteAll()
 }
