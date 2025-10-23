@@ -26,4 +26,18 @@ class SupplierMemRepoTest {
         Assert.assertTrue(repo.findAll().contains(supplier))
         Assert.assertEquals(0, supplier.id)
     }
+
+    @Test
+    fun update() {
+        val supplier = SupplierModel(name = "Original Name", email = "original@example.com")
+        repo.create(supplier)
+
+        supplier.name = "Updated Name"
+        supplier.email = "updated@example.com"
+        repo.update(supplier)
+
+        val updatedSupplier = repo.findAll().first()
+        Assert.assertEquals("Updated Name", updatedSupplier.name)
+        Assert.assertEquals("updated@example.com", updatedSupplier.email)
+    }
 }
