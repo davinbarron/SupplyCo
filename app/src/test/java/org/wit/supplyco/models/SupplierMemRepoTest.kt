@@ -48,4 +48,15 @@ class SupplierMemRepoTest {
         repo.delete(supplier)
         Assert.assertFalse(repo.findAll().contains(supplier))
     }
+
+    @Test
+    fun deleteAll() {
+        val supplier1 = SupplierModel(name = "Supplier One")
+        val supplier2 = SupplierModel(name = "Supplier Two")
+        repo.create(supplier1)
+        repo.create(supplier2)
+
+        repo.deleteAll()
+        Assert.assertEquals(0, repo.findAll().size)
+    }
 }
