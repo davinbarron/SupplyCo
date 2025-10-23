@@ -40,4 +40,12 @@ class SupplierMemRepoTest {
         Assert.assertEquals("Updated Name", updatedSupplier.name)
         Assert.assertEquals("updated@example.com", updatedSupplier.email)
     }
+
+    @Test
+    fun delete() {
+        val supplier = SupplierModel(name = "To Be Deleted")
+        repo.create(supplier)
+        repo.delete(supplier)
+        Assert.assertFalse(repo.findAll().contains(supplier))
+    }
 }
