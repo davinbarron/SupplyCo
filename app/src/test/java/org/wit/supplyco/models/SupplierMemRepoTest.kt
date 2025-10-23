@@ -72,4 +72,12 @@ class SupplierMemRepoTest {
         Assert.assertTrue(allSuppliers.contains(supplier1))
         Assert.assertTrue(allSuppliers.contains(supplier2))
     }
+
+    // Updates a supplier which does not exist
+    @Test
+    fun updateFakeSupplier() {
+        val ghost = SupplierModel(id = 999, name = "Ghost Supplier")
+        repo.update(ghost)
+        Assert.assertEquals(0, repo.findAll().size)
+    }
 }
