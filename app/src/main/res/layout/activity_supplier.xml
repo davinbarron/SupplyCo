@@ -25,9 +25,7 @@
 
             <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbarAdd"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:titleTextColor="@color/SmokeyBlack" >
+                    style="@style/ToolbarLayout">
 
                 <TextView
                         android:id="@+id/supplierActivityTitle"
@@ -39,10 +37,7 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@id/appBarLayout"
-                android:fillViewport="true">
+                style="@style/ScrollView">
 
             <LinearLayout
                     android:layout_width="match_parent"

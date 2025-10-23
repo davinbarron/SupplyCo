@@ -53,4 +53,30 @@
         <item name="android:layout_marginTop">4dp</item>
     </style>
 
+    <style name="ScrollView">
+        <item name="android:background">@color/LightGold</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:fillViewport">true</item>
+        <item name="android:layout_below">@id/appBarLayout</item>
+    </style>
+
+    <style name="AppBarLayout">
+        <item name="android:background">@color/DarkCerulean</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="ToolbarLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="RecyclerViewLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:background">@color/LightGold</item>
+    </style>
+
 </resources>
