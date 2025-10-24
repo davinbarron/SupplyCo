@@ -6,4 +6,5 @@ interface SupplierRepo {
     fun update(supplier: SupplierModel)
     fun delete(supplier: SupplierModel)
     fun deleteAll()
+    fun findSupplier(query: String): List<SupplierModel>
 }
