@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.wit.supplyco.R
 import org.wit.supplyco.adapters.SupplierAdapter
@@ -31,6 +32,18 @@ class SupplierListActivity : AppCompatActivity(), SupplierListener {
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
         refreshList()
+
+        //https://developer.android.com/reference/kotlin/android/widget/SearchView.OnQueryTextListener
+        binding.searchView.setOnQueryTextListener(object : OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                return false // False since the list refreshes when the text is changed not when it's submitted
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                refreshList(newText)
+                return true
+            }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -74,7 +87,12 @@ class SupplierListActivity : AppCompatActivity(), SupplierListener {
             }
         }
 
-    private fun refreshList() {
-        binding.recyclerView.adapter = SupplierAdapter(app.suppliers.findAll(), this)
+    private fun refreshList(query: String = "") {
+        val suppliers = if (query.isBlank()) {
+            app.suppliers.findAll()
+        } else {
+            app.suppliers.findSupplier(query)
+        }
+        binding.recyclerView.adapter = SupplierAdapter(suppliers, this)
     }
 }
