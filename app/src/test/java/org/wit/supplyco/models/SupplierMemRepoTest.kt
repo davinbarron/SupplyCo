@@ -1,6 +1,6 @@
 package org.wit.supplyco.models
 
-import org.junit.Assert
+import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 
@@ -23,8 +23,8 @@ class SupplierMemRepoTest {
     fun create() {
         val supplier = SupplierModel(name = "New Supplier")
         repo.create(supplier)
-        Assert.assertTrue(repo.findAll().contains(supplier))
-        Assert.assertEquals(0, supplier.id)
+        assertTrue(repo.findAll().contains(supplier))
+        assertEquals(0, supplier.id)
     }
 
     @Test
@@ -37,8 +37,8 @@ class SupplierMemRepoTest {
         repo.update(supplier)
 
         val updatedSupplier = repo.findAll().first()
-        Assert.assertEquals("Updated Name", updatedSupplier.name)
-        Assert.assertEquals("updated@example.com", updatedSupplier.email)
+        assertEquals("Updated Name", updatedSupplier.name)
+        assertEquals("updated@example.com", updatedSupplier.email)
     }
 
     @Test
@@ -46,7 +46,7 @@ class SupplierMemRepoTest {
         val supplier = SupplierModel(name = "To Be Deleted")
         repo.create(supplier)
         repo.delete(supplier)
-        Assert.assertFalse(repo.findAll().contains(supplier))
+        assertFalse(repo.findAll().contains(supplier))
     }
 
     @Test
@@ -57,7 +57,7 @@ class SupplierMemRepoTest {
         repo.create(supplier2)
 
         repo.deleteAll()
-        Assert.assertEquals(0, repo.findAll().size)
+        assertEquals(0, repo.findAll().size)
     }
 
     @Test
@@ -68,9 +68,9 @@ class SupplierMemRepoTest {
         repo.create(supplier2)
 
         val allSuppliers = repo.findAll()
-        Assert.assertEquals(2, allSuppliers.size)
-        Assert.assertTrue(allSuppliers.contains(supplier1))
-        Assert.assertTrue(allSuppliers.contains(supplier2))
+        assertEquals(2, allSuppliers.size)
+        assertTrue(allSuppliers.contains(supplier1))
+        assertTrue(allSuppliers.contains(supplier2))
     }
 
     // Updates a supplier which does not exist
@@ -78,6 +78,6 @@ class SupplierMemRepoTest {
     fun updateFakeSupplier() {
         val ghost = SupplierModel(id = 999, name = "Ghost Supplier")
         repo.update(ghost)
-        Assert.assertEquals(0, repo.findAll().size)
+        assertEquals(0, repo.findAll().size)
     }
 }
