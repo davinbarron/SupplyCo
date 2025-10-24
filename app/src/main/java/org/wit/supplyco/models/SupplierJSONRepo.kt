@@ -28,6 +28,8 @@ class SupplierJSONRepo(private val context: Context) : SupplierRepo {
 
     override fun findAll(): List<SupplierModel> = memRepo.findAll()
 
+    override fun findSupplier(query: String): List<SupplierModel> = memRepo.findSupplier(query)
+
     override fun create(supplier: SupplierModel) {
         memRepo.create(supplier)
         serialize()

@@ -54,4 +54,20 @@ class SupplierMemRepo : SupplierRepo {
     private fun findById(id: Long): SupplierModel? {
         return suppliers.find { s -> s.id == id }
     }
+
+    /*
+    Making use of the filter method since we want to find all suppliers with the query
+    Reason is that find will only return the first element that matches
+    It makes sense for id searching since the id will always be unique
+    However since the names, descriptions etc may not be unique that means find will not do
+    Resource: https://dev.to/khush/find-vs-filter-2528
+ */
+    override fun findSupplier(query: String): List<SupplierModel> {
+        return suppliers.filter { s -> s.name.contains(query)
+                || s.description.contains(query)
+                || s.contact.contains(query)
+                || s.email.contains(query)
+                || s.address.contains(query)
+        }
+    }
 }
