@@ -26,9 +26,22 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            style="@style/RecyclerViewLayout"/>
+            android:background="@color/LightGold">
+
+        <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchView"
+                style="@style/SearchView" />
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                style="@style/RecyclerViewLayout"/>
+
+    </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
