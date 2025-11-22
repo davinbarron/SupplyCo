@@ -25,7 +25,7 @@
             <meta-data android:name="android.app.lib_name"
                     android:value="" />
         </activity>
-        <activity android:name=".activities.SettingsActivity">
+        <activity android:name=".views.settings.SettingsView">
             <meta-data android:name="android.app.lib_name"
                     android:value="" />
         </activity>

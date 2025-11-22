@@ -13,7 +13,7 @@ import org.wit.supplyco.adapters.SupplierAdapter
 import org.wit.supplyco.adapters.SupplierListener
 import org.wit.supplyco.databinding.ActivitySupplierListBinding
 import org.wit.supplyco.models.SupplierModel
-import org.wit.supplyco.activities.SettingsActivity
+import org.wit.supplyco.views.settings.SettingsView
 import org.wit.supplyco.views.supplier.SupplierView
 
 class SupplierListView : AppCompatActivity(), SupplierListener {
@@ -32,6 +32,7 @@ class SupplierListView : AppCompatActivity(), SupplierListener {
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         presenter.loadSuppliers()
 
+        //https://developer.android.com/reference/kotlin/android/widget/SearchView.OnQueryTextListener
         binding.searchView.setOnQueryTextListener(object : OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean = false
             override fun onQueryTextChange(newText: String): Boolean {
@@ -80,7 +81,7 @@ class SupplierListView : AppCompatActivity(), SupplierListener {
     }
 
     fun navigateToSettings() {
-        val intent = Intent(this, SettingsActivity::class.java)
+        val intent = Intent(this, SettingsView::class.java)
         getResult.launch(intent)
     }
 
