@@ -11,7 +11,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.SupplyCo">
-        <activity android:name=".activities.SupplierListActivity"
+        <activity android:name=".views.supplierlist.SupplierListView"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,11 +21,11 @@
             <meta-data android:name="android.app.lib_name"
                     android:value="" />
         </activity>
-        <activity android:name=".activities.SupplierActivity">
+        <activity android:name=".views.supplier.SupplierView">
             <meta-data android:name="android.app.lib_name"
                     android:value="" />
         </activity>
-        <activity android:name=".activities.SettingsActivity">
+        <activity android:name=".views.settings.SettingsView">
             <meta-data android:name="android.app.lib_name"
                     android:value="" />
         </activity>
