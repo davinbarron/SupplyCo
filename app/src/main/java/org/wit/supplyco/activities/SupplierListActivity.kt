@@ -14,6 +14,7 @@ import org.wit.supplyco.adapters.SupplierListener
 import org.wit.supplyco.databinding.ActivitySupplierListBinding
 import org.wit.supplyco.main.MainApp
 import org.wit.supplyco.models.SupplierModel
+import org.wit.supplyco.views.supplier.SupplierView
 
 class SupplierListActivity : AppCompatActivity(), SupplierListener {
 
@@ -54,7 +55,7 @@ class SupplierListActivity : AppCompatActivity(), SupplierListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.item_add_supplier -> {
-                val launcherIntent = Intent(this, SupplierActivity::class.java)
+                val launcherIntent = Intent(this, SupplierView::class.java)
                 getResult.launch(launcherIntent)
             }
             R.id.item_settings -> {
@@ -73,7 +74,7 @@ class SupplierListActivity : AppCompatActivity(), SupplierListener {
     }
 
     override fun onSupplierClick(supplier: SupplierModel) {
-        val launcherIntent = Intent(this, SupplierActivity::class.java)
+        val launcherIntent = Intent(this, SupplierView::class.java)
         launcherIntent.putExtra("supplier_edit", supplier)
         getResult.launch(launcherIntent)
     }

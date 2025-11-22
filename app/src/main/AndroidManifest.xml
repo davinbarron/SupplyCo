@@ -21,7 +21,7 @@
             <meta-data android:name="android.app.lib_name"
                     android:value="" />
         </activity>
-        <activity android:name=".activities.SupplierActivity">
+        <activity android:name=".views.supplier.SupplierView">
             <meta-data android:name="android.app.lib_name"
                     android:value="" />
         </activity>
