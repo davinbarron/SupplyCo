@@ -19,5 +19,10 @@
     <string name="supplier_added">Supplier added successfully!</string>
     <string name="supplier_updated">Supplier updated successfully!</string>
     <string name="supplier_deleted">Supplier deleted successfully!</string>
-    <string name="supplier_field_warning">Please fill in all fields!</string>
+    <string name="button_addImage">Add an Image</string>
+    <string name="name">Name</string>
+    <string name="description">Description</string>
+    <string name="contact">Contact</string>
+    <string name="email">Email</string>
+    <string name="address">Address</string>
 </resources>
