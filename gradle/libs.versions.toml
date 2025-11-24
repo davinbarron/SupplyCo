@@ -12,6 +12,7 @@ activity = "1.12.0"
 constraintlayout = "2.2.1"
 timber = "1.5.1"
 kotlinPlugin = "2.2.21"
+picasso = "2.71828"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -24,6 +25,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 timber = { module = "com.github.ajalt:timberkt", version.ref = "timber" }
+picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

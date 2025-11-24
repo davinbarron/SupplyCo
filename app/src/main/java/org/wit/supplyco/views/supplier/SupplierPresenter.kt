@@ -9,13 +9,13 @@ class SupplierPresenter(private val view: SupplierView) {
 
     private var supplier = SupplierModel()
     private var edit = false
-    private val app: MainApp = view.application as MainApp
+    var app: MainApp = view.application as MainApp
     private val repo: SupplierRepo = app.suppliers
 
-    fun initSupplier(intent: Intent) {
-        if (intent.hasExtra("supplier_edit")) {
+    init {
+        if (view.intent.hasExtra("supplier_edit")) {
             edit = true
-            supplier = intent.extras?.getParcelable("supplier_edit")!!
+            supplier = view.intent.extras?.getParcelable("supplier_edit")!!
             view.showSupplier(supplier)
         }
     }

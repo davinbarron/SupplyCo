@@ -25,8 +25,6 @@ class SupplierView : AppCompatActivity() {
 
         presenter = SupplierPresenter(this)
 
-        presenter.initSupplier(intent)
-
         binding.buttonAddSupplier.setOnClickListener {
             presenter.doAddOrSave(
                 binding.supplierName.text.toString(),
