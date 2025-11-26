@@ -47,11 +47,8 @@
 
                     <ImageView
                             android:id="@+id/supplierImage"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
                             app:srcCompat="@drawable/ic_launcher_background"
-                            android:layout_weight="1"
-                            android:padding="10dp" />
+                            style="@style/ImageView" />
 
                 </LinearLayout>
 
@@ -175,7 +172,8 @@
                         android:id="@+id/buttonDeleteSupplier"
                         android:text="@string/button_deleteSupplier"
                         style="@style/Button"
-                        android:backgroundTint="@color/red"
+                        android:backgroundTint="@color/WeldonBlue"
+                        app:cornerRadius="10dp"
                         android:visibility="gone" />
             </LinearLayout>
         </ScrollView>
