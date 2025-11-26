@@ -44,7 +44,8 @@
                 <Button
                         android:id="@+id/buttonDeleteAllSuppliers"
                         android:text="@string/delete_allSuppliers"
-                        style="@style/Button" />
+                        style="@style/Button"
+                        app:cornerRadius="10dp"/>
 
             </LinearLayout>
         </ScrollView>

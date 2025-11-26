@@ -30,6 +30,7 @@ class SupplierMemRepo : SupplierRepo {
             foundSupplier.contact = supplier.contact
             foundSupplier.email = supplier.email
             foundSupplier.address = supplier.address
+            foundSupplier.image = supplier.image
             logAll()
         }
     }

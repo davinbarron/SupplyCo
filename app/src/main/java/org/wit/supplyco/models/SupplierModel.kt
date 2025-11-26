@@ -1,5 +1,6 @@
 package org.wit.supplyco.models
 
+import android.net.Uri
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
@@ -10,5 +11,6 @@ data class SupplierModel (
     var description: String = "",
     var contact: String = "",
     var email: String = "",
-    var address: String = ""
+    var address: String = "",
+    var image: Uri = Uri.EMPTY
 ) : Parcelable

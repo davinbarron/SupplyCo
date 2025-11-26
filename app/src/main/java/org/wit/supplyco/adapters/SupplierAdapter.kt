@@ -3,6 +3,7 @@ package org.wit.supplyco.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import org.wit.supplyco.databinding.CardSupplierBinding
 import org.wit.supplyco.models.SupplierModel
 
@@ -25,6 +26,8 @@ class SupplierAdapter constructor(
             binding.supplierContact.text = supplier.contact
             binding.supplierEmail.text = supplier.email
             binding.supplierAddress.text = supplier.address
+
+            Picasso.get().load(supplier.image).resize(200,200).into(binding.imageIcon)
 
             binding.root.setOnClickListener {
                 listener.onSupplierClick(supplier)
