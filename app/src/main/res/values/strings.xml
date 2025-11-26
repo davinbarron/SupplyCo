@@ -14,12 +14,12 @@
     <string name="menu_addSupplier">Add</string>
     <string name="menu_cancelSupplier">Cancel</string>
     <string name="menu_settings">Settings</string>
+    <string name="menu_chooseSupplierImage">Image</string>
     <string name="delete_allSuppliers">Delete All Suppliers</string>
     <string name="toolbar_title_settings">Settings</string>
     <string name="supplier_added">Supplier added successfully!</string>
     <string name="supplier_updated">Supplier updated successfully!</string>
     <string name="supplier_deleted">Supplier deleted successfully!</string>
-    <string name="button_addImage">Add an Image</string>
     <string name="name">Name</string>
     <string name="description">Description</string>
     <string name="contact">Contact</string>

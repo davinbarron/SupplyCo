@@ -1,5 +1,6 @@
 package org.wit.supplyco.views.supplier
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -7,9 +8,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
+import com.squareup.picasso.Picasso
 import org.wit.supplyco.R
 import org.wit.supplyco.databinding.ActivitySupplierBinding
 import org.wit.supplyco.models.SupplierModel
+import timber.log.Timber.i
 
 class SupplierView : AppCompatActivity() {
 
@@ -47,6 +50,7 @@ class SupplierView : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.choose_image -> presenter.doSelectImage()
             R.id.item_cancel -> presenter.doCancel()
         }
         return super.onOptionsItemSelected(item)
@@ -61,6 +65,16 @@ class SupplierView : AppCompatActivity() {
         binding.buttonAddSupplier.text = getString(R.string.button_saveSupplier)
         binding.supplierActivityTitle.text = getString(R.string.toolbar_title_supplier_details)
         binding.buttonDeleteSupplier.visibility = View.VISIBLE
+        Picasso.get()
+            .load(supplier.image)
+            .into(binding.supplierImage)
+    }
+
+    fun updateImage(image: Uri){
+        i("Image updated")
+        Picasso.get()
+            .load(image)
+            .into(binding.supplierImage)
     }
 
     fun showMessage(message: String) {
