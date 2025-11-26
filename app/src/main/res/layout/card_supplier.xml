@@ -11,35 +11,57 @@
 
     <LinearLayout
             android:background="@drawable/rounded_rectangles"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_height="match_parent">
 
-        <TextView
-                android:id="@+id/supplierName"
-                tools:text="Supplier Name"
-                style="@style/HeadingTextView" />
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="171dp"
+                android:layout_height="match_parent">
 
-        <TextView
-                android:id="@+id/supplierDescription"
-                tools:text="Description"
-                style="@style/DescriptionTextView" />
+            <ImageView
+                    android:id="@+id/imageIcon"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:contentDescription="@string/select_image"
+                    app:srcCompat="@drawable/ic_launcher_background"
+                    android:layout_weight="1"
+                    android:padding="10dp" />
+        </LinearLayout>
 
-        <TextView
-                android:id="@+id/supplierContact"
-                tools:text="Contact"
-                style="@style/DescriptionTextView" />
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
 
-        <TextView
-                android:id="@+id/supplierEmail"
-                tools:text="Email"
-                style="@style/DescriptionTextView" />
+            <TextView
+                    android:id="@+id/supplierName"
+                    tools:text="Supplier Name"
+                    style="@style/HeadingTextView" />
 
-        <TextView
-                android:id="@+id/supplierAddress"
-                tools:text="Address"
-                style="@style/DescriptionTextView" />
+            <TextView
+                    android:id="@+id/supplierDescription"
+                    tools:text="Description"
+                    style="@style/DescriptionTextView" />
 
+            <TextView
+                    android:id="@+id/supplierContact"
+                    tools:text="Contact"
+                    style="@style/DescriptionTextView" />
+
+            <TextView
+                    android:id="@+id/supplierEmail"
+                    tools:text="Email"
+                    style="@style/DescriptionTextView" />
+
+            <TextView
+                    android:id="@+id/supplierAddress"
+                    tools:text="Address"
+                    style="@style/DescriptionTextView" />
+
+        </LinearLayout>
     </LinearLayout>
+
 </androidx.cardview.widget.CardView>
