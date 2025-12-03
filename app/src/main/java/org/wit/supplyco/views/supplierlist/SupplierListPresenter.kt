@@ -23,9 +23,15 @@ class SupplierListPresenter(val view: SupplierListView) {
         registerSettingsCallback()
     }
 
+    fun startListening() {
+        repo.listenAll { suppliers ->
+            view.showSuppliers(suppliers)
+        }
+    }
+
     fun loadSuppliers(query: String = "") {
         if (query.isBlank()) {
-            repo.findAll { suppliers -> view.showSuppliers(suppliers) }
+            startListening()
         } else {
             repo.findSupplier(query) { suppliers -> view.showSuppliers(suppliers) }
         }

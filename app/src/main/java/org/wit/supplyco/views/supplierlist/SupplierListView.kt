@@ -27,7 +27,7 @@ class SupplierListView : AppCompatActivity(), SupplierListener {
         presenter = SupplierListPresenter(this)
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        presenter.loadSuppliers()
+        presenter.startListening()
 
         //https://developer.android.com/reference/kotlin/android/widget/SearchView.OnQueryTextListener
         binding.searchView.setOnQueryTextListener(object : OnQueryTextListener {
@@ -54,7 +54,7 @@ class SupplierListView : AppCompatActivity(), SupplierListener {
 
     override fun onResume() {
         super.onResume()
-        presenter.loadSuppliers()
+        presenter.startListening()
     }
 
     override fun onSupplierClick(supplier: SupplierModel) {

@@ -7,4 +7,5 @@ interface SupplierRepo {
     fun update(supplier: SupplierModel)
     fun delete(supplier: SupplierModel)
     fun deleteAll()
+    fun listenAll(callback: (List<SupplierModel>) -> Unit)
 }

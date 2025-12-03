@@ -13,6 +13,7 @@ import timber.log.Timber.i
  * Update: https://firebase.google.com/docs/firestore/manage-data/add-data#update-data
  * Delete: https://firebase.google.com/docs/firestore/manage-data/delete-data#delete_documents
  * Read: https://firebase.google.com/docs/firestore/query-data/get-data#custom_objects
+ * Real-time updates: https://firebase.google.com/docs/firestore/query-data/listen
  */
 
 class SupplierFirestoreRepo : SupplierRepo {
@@ -106,5 +107,21 @@ class SupplierFirestoreRepo : SupplierRepo {
             .addOnFailureListener { e ->
                 e("Error deleting all suppliers: $e")
             }
+    }
+
+    override fun listenAll(callback: (List<SupplierModel>) -> Unit) {
+        collection.addSnapshotListener { snapshot, e ->
+            if (e != null) {
+                e("Listen failed: $e")
+                return@addSnapshotListener
+            }
+
+            val suppliers = snapshot?.documents?.mapNotNull { doc ->
+                val supplier = doc.toObject(SupplierModel::class.java)
+                supplier?.apply { id = doc.id }
+            } ?: emptyList()
+
+            callback(suppliers)
+        }
     }
 }
