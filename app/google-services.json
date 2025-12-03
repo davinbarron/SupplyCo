@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "566992924626",
+    "project_id": "mobile-app-dev-1-478819",
+    "storage_bucket": "mobile-app-dev-1-478819.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:566992924626:android:dc2dc6b46c47b4d12c220b",
+        "android_client_info": {
+          "package_name": "org.wit.supplyco"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBY1l4-oDF2ffYyGptq7n2_QC4v4UCbOtM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

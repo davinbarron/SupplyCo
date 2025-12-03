@@ -1,10 +1,8 @@
 package org.wit.supplyco.views.supplierlist
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,13 +11,12 @@ import org.wit.supplyco.adapters.SupplierAdapter
 import org.wit.supplyco.adapters.SupplierListener
 import org.wit.supplyco.databinding.ActivitySupplierListBinding
 import org.wit.supplyco.models.SupplierModel
-import org.wit.supplyco.views.settings.SettingsView
-import org.wit.supplyco.views.supplier.SupplierView
 
 class SupplierListView : AppCompatActivity(), SupplierListener {
 
     private lateinit var binding: ActivitySupplierListBinding
-    private lateinit var presenter: SupplierListPresenter
+    lateinit var presenter: SupplierListPresenter
+    private var position: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +27,7 @@ class SupplierListView : AppCompatActivity(), SupplierListener {
         presenter = SupplierListPresenter(this)
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        presenter.loadSuppliers()
+        presenter.startListening()
 
         //https://developer.android.com/reference/kotlin/android/widget/SearchView.OnQueryTextListener
         binding.searchView.setOnQueryTextListener(object : OnQueryTextListener {
@@ -57,38 +54,18 @@ class SupplierListView : AppCompatActivity(), SupplierListener {
 
     override fun onResume() {
         super.onResume()
-        presenter.loadSuppliers()
+        presenter.startListening()
     }
 
     override fun onSupplierClick(supplier: SupplierModel) {
-        presenter.doEditSupplier(supplier)
+        presenter.doEditSupplier(supplier, position)
     }
 
-    // Methods the presenter can call back into
     fun showSuppliers(suppliers: List<SupplierModel>) {
         binding.recyclerView.adapter = SupplierAdapter(suppliers, this)
     }
 
-    fun navigateToSupplier(supplier: SupplierModel) {
-        val intent = Intent(this, SupplierView::class.java)
-        intent.putExtra("supplier_edit", supplier)
-        getResult.launch(intent)
+    fun onDelete(position: Int) {
+        binding.recyclerView.adapter?.notifyItemRemoved(position)
     }
-
-    fun navigateToAddSupplier() {
-        val intent = Intent(this, SupplierView::class.java)
-        getResult.launch(intent)
-    }
-
-    fun navigateToSettings() {
-        val intent = Intent(this, SettingsView::class.java)
-        getResult.launch(intent)
-    }
-
-    private val getResult =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            if (it.resultCode == RESULT_OK) {
-                presenter.loadSuppliers()
-            }
-        }
 }

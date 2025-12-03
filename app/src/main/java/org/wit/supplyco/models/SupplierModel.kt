@@ -6,11 +6,11 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class SupplierModel (
-    var id: Long = 0,
+    var id: String? = null,
     var name: String = "",
     var description: String = "",
     var contact: String = "",
     var email: String = "",
     var address: String = "",
-    var image: Uri = Uri.EMPTY
+    var image: String? = null
 ) : Parcelable

@@ -9,7 +9,7 @@ import org.wit.supplyco.databinding.ActivitySettingsBinding
 class SettingsView : AppCompatActivity() {
 
     private lateinit var binding: ActivitySettingsBinding
-    private lateinit var presenter: SettingsPresenter
+    lateinit var presenter: SettingsPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +24,7 @@ class SettingsView : AppCompatActivity() {
         }
     }
 
-    // Methods the presenter can call back into
+    // Presenter callbacks
     fun showMessage(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
@@ -33,8 +33,8 @@ class SettingsView : AppCompatActivity() {
         Snackbar.make(binding.root, error, Snackbar.LENGTH_LONG).show()
     }
 
-    fun close() {
-        setResult(RESULT_OK)
+    fun closeWithResult(resultCode: Int) {
+        setResult(resultCode)
         finish()
     }
 }
