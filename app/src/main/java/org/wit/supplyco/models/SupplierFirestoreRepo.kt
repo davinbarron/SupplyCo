@@ -96,5 +96,15 @@ class SupplierFirestoreRepo : SupplierRepo {
     }
 
     override fun deleteAll() {
+        collection.get()
+            .addOnSuccessListener { result ->
+                for (doc in result) {
+                    doc.reference.delete()
+                }
+                i("All suppliers deleted from Firestore")
+            }
+            .addOnFailureListener { e ->
+                e("Error deleting all suppliers: $e")
+            }
     }
 }

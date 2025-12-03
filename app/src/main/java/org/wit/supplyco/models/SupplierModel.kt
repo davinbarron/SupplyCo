@@ -12,5 +12,5 @@ data class SupplierModel (
     var contact: String = "",
     var email: String = "",
     var address: String = "",
-    var image: String = ""
+    var image: String? = null
 ) : Parcelable
