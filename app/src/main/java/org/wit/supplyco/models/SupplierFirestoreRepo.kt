@@ -81,6 +81,18 @@ class SupplierFirestoreRepo : SupplierRepo {
     }
 
     override fun delete(supplier: SupplierModel) {
+        val id = supplier.id
+        if (id != null) {
+            collection.document(id).delete()
+                .addOnSuccessListener {
+                    i("Supplier deleted with Firestore ID: $id")
+                }
+                .addOnFailureListener { e ->
+                    e("Error deleting supplier: $e")
+                }
+        } else {
+            e("Cannot delete supplier: missing Firestore ID")
+        }
     }
 
     override fun deleteAll() {
