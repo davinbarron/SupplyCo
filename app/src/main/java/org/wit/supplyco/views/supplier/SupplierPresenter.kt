@@ -1,5 +1,6 @@
 package org.wit.supplyco.views.supplier
 
+import android.app.Activity
 import android.content.Intent
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.PickVisualMediaRequest
@@ -13,9 +14,9 @@ class SupplierPresenter(private val view: SupplierView) {
 
     private var supplier = SupplierModel()
     private var edit = false
-    var app: MainApp = view.application as MainApp
-    private lateinit var imageIntentLauncher : ActivityResultLauncher<PickVisualMediaRequest>
+    private val app: MainApp = view.application as MainApp
     private val repo: SupplierRepo = app.suppliers
+    private lateinit var imageIntentLauncher: ActivityResultLauncher<PickVisualMediaRequest>
 
     init {
         if (view.intent.hasExtra("supplier_edit")) {
@@ -43,8 +44,7 @@ class SupplierPresenter(private val view: SupplierView) {
                 repo.create(supplier)
                 view.showMessage("Supplier added successfully!")
             }
-            view.setResult(android.app.Activity.RESULT_OK)
-            view.finish()
+            view.closeWithResult(Activity.RESULT_OK)
         } else {
             view.showError("Please fill in all fields!")
         }
@@ -53,12 +53,11 @@ class SupplierPresenter(private val view: SupplierView) {
     fun doDelete() {
         repo.delete(supplier)
         view.showMessage("Supplier deleted successfully!")
-        view.setResult(android.app.Activity.RESULT_OK)
-        view.finish()
+        view.closeWithResult(Activity.RESULT_OK)
     }
 
     fun doCancel() {
-        view.finish()
+        view.closeWithResult(Activity.RESULT_CANCELED)
     }
 
     fun doSelectImage() {
@@ -68,27 +67,19 @@ class SupplierPresenter(private val view: SupplierView) {
         imageIntentLauncher.launch(request)
     }
 
-    fun cacheSupplier (name: String, desc: String, contact: String, email: String, address: String) {
-        supplier.name = name
-        supplier.description = desc
-        supplier.contact = contact
-        supplier.email = email
-        supplier.address = address
-    }
-
     private fun registerImagePickerCallback() {
         imageIntentLauncher = view.registerForActivityResult(
             ActivityResultContracts.PickVisualMedia()
         ) {
-            try{
-                view.contentResolver
-                    .takePersistableUriPermission(it!!,
-                        Intent.FLAG_GRANT_READ_URI_PERMISSION )
-                supplier.image = it // The returned Uri
+            try {
+                view.contentResolver.takePersistableUriPermission(
+                    it!!,
+                    Intent.FLAG_GRANT_READ_URI_PERMISSION
+                )
+                supplier.image = it
                 i("IMG :: ${supplier.image}")
                 view.updateImage(supplier.image)
-            }
-            catch(e:Exception){
+            } catch (e: Exception) {
                 e.printStackTrace()
             }
         }

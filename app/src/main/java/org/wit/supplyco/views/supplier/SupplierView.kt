@@ -12,12 +12,11 @@ import com.squareup.picasso.Picasso
 import org.wit.supplyco.R
 import org.wit.supplyco.databinding.ActivitySupplierBinding
 import org.wit.supplyco.models.SupplierModel
-import timber.log.Timber.i
 
 class SupplierView : AppCompatActivity() {
 
     private lateinit var binding: ActivitySupplierBinding
-    private lateinit var presenter: SupplierPresenter
+    lateinit var presenter: SupplierPresenter
     var supplier = SupplierModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,6 +55,7 @@ class SupplierView : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    // Presenter callbacks
     fun showSupplier(supplier: SupplierModel) {
         binding.supplierName.setText(supplier.name)
         binding.supplierDescription.setText(supplier.description)
@@ -65,16 +65,11 @@ class SupplierView : AppCompatActivity() {
         binding.buttonAddSupplier.text = getString(R.string.button_saveSupplier)
         binding.supplierActivityTitle.text = getString(R.string.toolbar_title_supplier_details)
         binding.buttonDeleteSupplier.visibility = View.VISIBLE
-        Picasso.get()
-            .load(supplier.image)
-            .into(binding.supplierImage)
+        Picasso.get().load(supplier.image).into(binding.supplierImage)
     }
 
-    fun updateImage(image: Uri){
-        i("Image updated")
-        Picasso.get()
-            .load(image)
-            .into(binding.supplierImage)
+    fun updateImage(image: Uri) {
+        Picasso.get().load(image).into(binding.supplierImage)
     }
 
     fun showMessage(message: String) {
@@ -83,5 +78,10 @@ class SupplierView : AppCompatActivity() {
 
     fun showError(error: String) {
         Snackbar.make(binding.root, error, Snackbar.LENGTH_LONG).show()
+    }
+
+    fun closeWithResult(resultCode: Int) {
+        setResult(resultCode)
+        finish()
     }
 }
