@@ -2,6 +2,7 @@ package org.wit.supplyco.views.supplier
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -70,15 +71,18 @@ class SupplierPresenter(private val view: SupplierView) {
     private fun registerImagePickerCallback() {
         imageIntentLauncher = view.registerForActivityResult(
             ActivityResultContracts.PickVisualMedia()
-        ) {
+        ) { uri: Uri? ->
             try {
-                view.contentResolver.takePersistableUriPermission(
-                    it!!,
-                    Intent.FLAG_GRANT_READ_URI_PERMISSION
-                )
-                supplier.image = it
-                i("IMG :: ${supplier.image}")
-                view.updateImage(supplier.image)
+                if (uri != null) {
+                    view.contentResolver.takePersistableUriPermission(
+                        uri,
+                        Intent.FLAG_GRANT_READ_URI_PERMISSION
+                    )
+                    // Store as String in Firestore model
+                    supplier.image = uri.toString()
+                    i("IMG :: ${supplier.image}")
+                    view.updateImage(uri)
+                }
             } catch (e: Exception) {
                 e.printStackTrace()
             }

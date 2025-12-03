@@ -27,13 +27,13 @@ class SupplierListView : AppCompatActivity(), SupplierListener {
         presenter = SupplierListPresenter(this)
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        loadSuppliers()
+        presenter.loadSuppliers()
 
         //https://developer.android.com/reference/kotlin/android/widget/SearchView.OnQueryTextListener
         binding.searchView.setOnQueryTextListener(object : OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean = false
             override fun onQueryTextChange(newText: String): Boolean {
-                loadSuppliers(newText)
+                presenter.loadSuppliers(newText)
                 return true
             }
         })
@@ -54,20 +54,15 @@ class SupplierListView : AppCompatActivity(), SupplierListener {
 
     override fun onResume() {
         super.onResume()
-        loadSuppliers()
+        presenter.loadSuppliers()
     }
 
     override fun onSupplierClick(supplier: SupplierModel) {
         presenter.doEditSupplier(supplier, position)
     }
 
-    private fun loadSuppliers(query: String = "") {
-        binding.recyclerView.adapter = SupplierAdapter(presenter.getSuppliers(query), this)
-        onRefresh()
-    }
-
-    fun onRefresh() {
-        binding.recyclerView.adapter?.notifyItemRangeChanged(0, presenter.getSuppliers().size)
+    fun showSuppliers(suppliers: List<SupplierModel>) {
+        binding.recyclerView.adapter = SupplierAdapter(suppliers, this)
     }
 
     fun onDelete(position: Int) {

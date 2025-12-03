@@ -19,12 +19,37 @@ class SupplierFirestoreRepo : SupplierRepo {
     private val db: FirebaseFirestore = Firebase.firestore
     private val collection = db.collection("suppliers")
 
-    override fun findAll(): List<SupplierModel> {
-        return emptyList() // Testing for now
+    override fun findAll(callback: (List<SupplierModel>) -> Unit) {
+        collection.get()
+            .addOnSuccessListener { result ->
+                val suppliers = result.documents.mapNotNull { doc ->
+                    val supplier = doc.toObject(SupplierModel::class.java)
+                    supplier?.apply { id = doc.id }
+                }
+                callback(suppliers)
+            }
+            .addOnFailureListener { e ->
+                e("Error fetching suppliers: $e")
+                callback(emptyList())
+            }
     }
 
-    override fun findSupplier(query: String): List<SupplierModel> {
-        return emptyList() // Testing for now
+    override fun findSupplier(query: String, callback: (List<SupplierModel>) -> Unit) {
+        collection
+            .whereGreaterThanOrEqualTo("name", query)
+            .whereLessThanOrEqualTo("name", query + '\uf8ff')
+            .get()
+            .addOnSuccessListener { result ->
+                val suppliers = result.documents.mapNotNull { doc ->
+                    val supplier = doc.toObject(SupplierModel::class.java)
+                    supplier?.apply { id = doc.id }
+                }
+                callback(suppliers)
+            }
+            .addOnFailureListener { e ->
+                e("Error searching suppliers: $e")
+                callback(emptyList())
+            }
     }
 
     override fun create(supplier: SupplierModel) {

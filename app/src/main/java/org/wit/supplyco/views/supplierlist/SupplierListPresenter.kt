@@ -23,8 +23,12 @@ class SupplierListPresenter(val view: SupplierListView) {
         registerSettingsCallback()
     }
 
-    fun getSuppliers(query: String = ""): List<SupplierModel> {
-        return if (query.isBlank()) repo.findAll() else repo.findSupplier(query)
+    fun loadSuppliers(query: String = "") {
+        if (query.isBlank()) {
+            repo.findAll { suppliers -> view.showSuppliers(suppliers) }
+        } else {
+            repo.findSupplier(query) { suppliers -> view.showSuppliers(suppliers) }
+        }
     }
 
     fun doAddSupplier() {
@@ -47,8 +51,11 @@ class SupplierListPresenter(val view: SupplierListView) {
     private fun registerRefreshCallback() {
         refreshIntentLauncher =
             view.registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-                if (it.resultCode == Activity.RESULT_OK) view.onRefresh()
-                else if (it.resultCode == 99) view.onDelete(position)
+                if (it.resultCode == Activity.RESULT_OK) {
+                    loadSuppliers()
+                } else if (it.resultCode == 99) {
+                    view.onDelete(position)
+                }
             }
     }
 
