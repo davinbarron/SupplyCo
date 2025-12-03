@@ -66,6 +66,18 @@ class SupplierFirestoreRepo : SupplierRepo {
     }
 
     override fun update(supplier: SupplierModel) {
+        val id = supplier.id
+        if (id != null) {
+            collection.document(id).set(supplier)
+                .addOnSuccessListener {
+                    i("Supplier updated with Firestore ID: $id")
+                }
+                .addOnFailureListener { e ->
+                    e("Error updating supplier: $e")
+                }
+        } else {
+            e("Cannot update supplier: missing Firestore ID")
+        }
     }
 
     override fun delete(supplier: SupplierModel) {
