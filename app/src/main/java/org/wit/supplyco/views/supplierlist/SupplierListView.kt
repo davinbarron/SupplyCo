@@ -40,7 +40,7 @@ class SupplierListView : AppCompatActivity(), SupplierListener {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_suppliers, menu)
+        menuInflater.inflate(R.menu.menu_list, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
