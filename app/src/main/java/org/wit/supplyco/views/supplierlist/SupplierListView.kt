@@ -1,5 +1,6 @@
 package org.wit.supplyco.views.supplierlist
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -11,6 +12,7 @@ import org.wit.supplyco.adapters.SupplierAdapter
 import org.wit.supplyco.adapters.SupplierListener
 import org.wit.supplyco.databinding.ActivitySupplierListBinding
 import org.wit.supplyco.models.SupplierModel
+import org.wit.supplyco.views.itemlist.ItemListView
 
 class SupplierListView : AppCompatActivity(), SupplierListener {
 
@@ -58,7 +60,7 @@ class SupplierListView : AppCompatActivity(), SupplierListener {
     }
 
     override fun onSupplierClick(supplier: SupplierModel) {
-        presenter.doEditSupplier(supplier, position)
+        presenter.doOpenItemList(supplier)
     }
 
     fun showSuppliers(suppliers: List<SupplierModel>) {

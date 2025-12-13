@@ -6,6 +6,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import org.wit.supplyco.main.MainApp
 import org.wit.supplyco.models.SupplierModel
+import org.wit.supplyco.views.itemlist.ItemListView
 import org.wit.supplyco.views.settings.SettingsView
 import org.wit.supplyco.views.supplier.SupplierView
 
@@ -42,11 +43,17 @@ class SupplierListPresenter(val view: SupplierListView) {
         refreshIntentLauncher.launch(launcherIntent)
     }
 
-    fun doEditSupplier(supplier: SupplierModel, pos: Int) {
-        val launcherIntent = Intent(view, SupplierView::class.java)
-        launcherIntent.putExtra("supplier_edit", supplier)
-        position = pos
-        refreshIntentLauncher.launch(launcherIntent)
+//    fun doEditSupplier(supplier: SupplierModel, pos: Int) {
+//        val launcherIntent = Intent(view, SupplierView::class.java)
+//        launcherIntent.putExtra("supplier_edit", supplier)
+//        position = pos
+//        refreshIntentLauncher.launch(launcherIntent)
+//    }
+
+    fun doOpenItemList(supplier: SupplierModel) {
+        val launcherIntent = Intent(view, ItemListView::class.java)
+        launcherIntent.putExtra("supplier", supplier)
+        view.startActivity(launcherIntent)
     }
 
     fun doOpenSettings() {
