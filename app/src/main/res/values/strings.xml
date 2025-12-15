@@ -38,4 +38,6 @@
     <string name="hint_itemDescription">Item Description</string>
     <string name="toolbar_title_item_list">Items</string>
     <string name="menu_editSupplier">Edit</string>
+    <string name="button_saveItem">Save Item Details</string>
+    <string name="toolbar_title_item_details">Item Details</string>
 </resources>
