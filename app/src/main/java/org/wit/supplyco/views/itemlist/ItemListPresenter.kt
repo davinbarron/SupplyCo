@@ -1,10 +1,12 @@
 package org.wit.supplyco.views.itemlist
 
 import android.content.Intent
+import androidx.activity.result.ActivityResultLauncher
 import org.wit.supplyco.main.MainApp
 import org.wit.supplyco.models.ItemModel
 import org.wit.supplyco.models.SupplierModel
 import org.wit.supplyco.views.item.ItemView
+import org.wit.supplyco.views.settings.SettingsView
 import org.wit.supplyco.views.supplier.SupplierView
 
 class ItemListPresenter(val view: ItemListView, private val supplier: SupplierModel) {
@@ -35,6 +37,13 @@ class ItemListPresenter(val view: ItemListView, private val supplier: SupplierMo
     fun doEditSupplier() {
         val intent = Intent(view, SupplierView::class.java)
         intent.putExtra("supplier_edit", supplier)
+        view.startActivity(intent)
+    }
+
+    fun doOpenSettings() {
+        val intent = Intent(view, SettingsView::class.java)
+        intent.putExtra("settings_mode", "items")
+        intent.putExtra("supplier_id", supplier.id)
         view.startActivity(intent)
     }
 }

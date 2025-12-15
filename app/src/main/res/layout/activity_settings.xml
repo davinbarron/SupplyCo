@@ -42,7 +42,7 @@
                     android:orientation="vertical">
 
                 <Button
-                        android:id="@+id/buttonDeleteAllSuppliers"
+                        android:id="@+id/buttonDeleteAll"
                         android:text="@string/delete_allSuppliers"
                         style="@style/Button"
                         app:cornerRadius="10dp"/>

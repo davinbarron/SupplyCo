@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
+import org.wit.supplyco.R
 import org.wit.supplyco.databinding.ActivitySettingsBinding
 
 class SettingsView : AppCompatActivity() {
@@ -19,8 +20,22 @@ class SettingsView : AppCompatActivity() {
 
         presenter = SettingsPresenter(this)
 
-        binding.buttonDeleteAllSuppliers.setOnClickListener {
-            presenter.doDeleteAllSuppliers()
+        // Decide mode based on intent
+        val mode = intent.getStringExtra("settings_mode") ?: "suppliers"
+        val supplierId = intent.getStringExtra("supplier_id")
+
+        if (mode == "items" && supplierId != null) {
+            binding.buttonDeleteAll.text = getString(R.string.delete_allItems)
+
+            binding.buttonDeleteAll.setOnClickListener {
+                presenter.doDeleteAllItems(supplierId)
+            }
+        } else {
+            binding.buttonDeleteAll.text = getString(R.string.delete_allSuppliers)
+
+            binding.buttonDeleteAll.setOnClickListener {
+                presenter.doDeleteAllSuppliers()
+            }
         }
     }
 

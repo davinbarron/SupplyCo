@@ -43,13 +43,6 @@ class SupplierListPresenter(val view: SupplierListView) {
         refreshIntentLauncher.launch(launcherIntent)
     }
 
-//    fun doEditSupplier(supplier: SupplierModel, pos: Int) {
-//        val launcherIntent = Intent(view, SupplierView::class.java)
-//        launcherIntent.putExtra("supplier_edit", supplier)
-//        position = pos
-//        refreshIntentLauncher.launch(launcherIntent)
-//    }
-
     fun doOpenItemList(supplier: SupplierModel) {
         val launcherIntent = Intent(view, ItemListView::class.java)
         launcherIntent.putExtra("supplier", supplier)
@@ -58,6 +51,7 @@ class SupplierListPresenter(val view: SupplierListView) {
 
     fun doOpenSettings() {
         val launcherIntent = Intent(view, SettingsView::class.java)
+        launcherIntent.putExtra("settings_mode", "suppliers")
         settingsIntentLauncher.launch(launcherIntent)
     }
 
