@@ -4,7 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import org.wit.supplyco.R
 import org.wit.supplyco.databinding.CardItemBinding
+import org.wit.supplyco.helper.toFormattedDate
 import org.wit.supplyco.models.ItemModel
 
 class ItemAdapter constructor(
@@ -16,12 +18,16 @@ class ItemAdapter constructor(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: ItemModel, listener: ItemListener) {
+            val context = binding.root.context
 
             binding.itemName.text = item.name
             binding.itemDescription.text = item.description
-            binding.itemAmount.text = "Amount: ${item.amount}"
-            binding.itemPrice.text = "Price: €${item.price}"
-            binding.itemReleaseDate.text = "Release Date: ${item.releaseDate ?: "Not set"}"
+            binding.itemAmount.text = context.getString(R.string.item_amount, item.amount)
+            binding.itemPrice.text = context.getString(R.string.item_price, item.price)
+            binding.itemReleaseDate.text = context.getString(
+                R.string.item_release_date,
+                item.releaseDate.toFormattedDate(context)
+            )
 
             Picasso.get().load(item.image).resize(200,200).into(binding.itemImageIcon)
 

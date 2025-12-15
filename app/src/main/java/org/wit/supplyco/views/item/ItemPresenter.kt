@@ -28,13 +28,14 @@ class ItemPresenter(private val view: ItemView) {
         registerImagePickerCallback()
     }
 
-    fun doAddOrSave(name: String, desc: String, amount: Int, price: Double) {
+    fun doAddOrSave(name: String, desc: String, amount: Int, price: Double, releaseDate: Long?) {
         if (name.isNotEmpty() && desc.isNotEmpty()) {
             item.apply {
                 this.name = name
                 this.description = desc
                 this.amount = amount
                 this.price = price
+                this.releaseDate = releaseDate
             }
 
             if (edit) {

@@ -1,5 +1,6 @@
 package org.wit.supplyco.views.item
 
+import android.app.DatePickerDialog
 import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
@@ -11,8 +12,10 @@ import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import org.wit.supplyco.R
 import org.wit.supplyco.databinding.ActivityItemBinding
+import org.wit.supplyco.helper.toFormattedDate
 import org.wit.supplyco.models.ItemModel
 import org.wit.supplyco.models.SupplierModel
+import java.util.Calendar
 
 class ItemView : AppCompatActivity() {
 
@@ -36,13 +39,44 @@ class ItemView : AppCompatActivity() {
                 binding.itemName.text.toString(),
                 binding.itemDescription.text.toString(),
                 binding.itemAmountPicker.value,
-                binding.itemPrice.text.toString().toDoubleOrNull() ?: 0.0
+                binding.itemPrice.text.toString().toDoubleOrNull() ?: 0.0,
+                item.releaseDate
             )
         }
 
         binding.buttonDeleteItem.setOnClickListener {
             presenter.doDelete()
         }
+
+        // Binding number picker
+        binding.itemAmountPicker.minValue = 0
+        binding.itemAmountPicker.maxValue = 100
+        binding.itemAmountPicker.wrapSelectorWheel = true
+
+        // Binding the calender
+        // https://medium.com/@abhisheksuman413/how-to-implement-datepickerdialog-in-android-using-kotlin-45c413e47464
+        binding.itemReleaseDate.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val year = calendar.get(Calendar.YEAR)
+            val month = calendar.get(Calendar.MONTH)
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+            DatePickerDialog(
+                this,
+                { _, selectedYear, selectedMonth, selectedDay ->
+
+                    // Get timestamp in millis
+                    val pickedMillis = Calendar.getInstance().apply {
+                        set(selectedYear, selectedMonth, selectedDay)
+                    }.timeInMillis
+
+                    item.releaseDate = pickedMillis
+                    binding.itemReleaseDate.text = pickedMillis.toFormattedDate(this)
+                },
+                year, month, day
+            ).show()
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -63,6 +97,7 @@ class ItemView : AppCompatActivity() {
         binding.itemDescription.setText(item.description)
         binding.itemAmountPicker.value = item.amount
         binding.itemPrice.setText(item.price.toString())
+        binding.itemReleaseDate.text = item.releaseDate.toFormattedDate(this)
         binding.buttonAddItem.text = getString(R.string.button_saveItem)
         binding.itemActivityTitle.text = getString(R.string.toolbar_title_item_details)
         binding.buttonDeleteItem.visibility = View.VISIBLE
