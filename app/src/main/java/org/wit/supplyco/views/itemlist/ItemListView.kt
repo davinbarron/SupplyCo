@@ -35,7 +35,7 @@ class ItemListView : AppCompatActivity(), ItemListener {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_list, menu)
 
-        menu.findItem(R.id.item_add_supplier)?.isVisible = false
+        menu.findItem(R.id.item_add)?.isVisible = true
         menu.findItem(R.id.item_edit_supplier)?.isVisible = true
 
         return super.onCreateOptionsMenu(menu)
@@ -43,6 +43,7 @@ class ItemListView : AppCompatActivity(), ItemListener {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.item_add -> presenter.doAddItem()
             R.id.item_edit_supplier -> presenter.doEditSupplier()
            // R.id.item_settings -> presenter.doOpenSettings()
         }

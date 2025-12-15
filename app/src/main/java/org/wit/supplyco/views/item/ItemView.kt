@@ -46,9 +46,7 @@ class ItemView : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_list, menu)
-        // Hide supplier-only actions
-        menu.findItem(R.id.item_add_supplier)?.isVisible = false
+        menuInflater.inflate(R.menu.menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
 

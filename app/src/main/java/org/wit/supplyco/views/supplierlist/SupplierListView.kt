@@ -1,6 +1,5 @@
 package org.wit.supplyco.views.supplierlist
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -12,7 +11,6 @@ import org.wit.supplyco.adapters.SupplierAdapter
 import org.wit.supplyco.adapters.SupplierListener
 import org.wit.supplyco.databinding.ActivitySupplierListBinding
 import org.wit.supplyco.models.SupplierModel
-import org.wit.supplyco.views.itemlist.ItemListView
 
 class SupplierListView : AppCompatActivity(), SupplierListener {
 
@@ -44,7 +42,7 @@ class SupplierListView : AppCompatActivity(), SupplierListener {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_list, menu)
 
-        menu.findItem(R.id.item_add_supplier)?.isVisible = true
+        menu.findItem(R.id.item_add)?.isVisible = true
         menu.findItem(R.id.item_edit_supplier)?.isVisible = false
 
         return super.onCreateOptionsMenu(menu)
@@ -52,7 +50,7 @@ class SupplierListView : AppCompatActivity(), SupplierListener {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.item_add_supplier -> presenter.doAddSupplier()
+            R.id.item_add -> presenter.doAddSupplier()
             R.id.item_settings -> presenter.doOpenSettings()
         }
         return super.onOptionsItemSelected(item)

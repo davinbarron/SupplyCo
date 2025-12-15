@@ -3,9 +3,15 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-            android:id="@+id/item_add_supplier"
+            android:id="@+id/item_add"
             android:icon="@android:drawable/ic_menu_add"
             android:title="@string/menu_addSupplier"
+            app:showAsAction="always" />
+
+    <item
+            android:id="@+id/item_edit_supplier"
+            android:icon="@android:drawable/ic_menu_edit"
+            android:title="@string/menu_editSupplier"
             app:showAsAction="always" />
 
     <item
@@ -14,9 +20,4 @@
             android:title="@string/menu_settings"
             app:showAsAction="always" />
 
-    <item
-            android:id="@+id/item_edit_supplier"
-            android:icon="@android:drawable/ic_menu_edit"
-            android:title="@string/menu_editSupplier"
-            app:showAsAction="always" />
 </menu>

@@ -14,13 +14,9 @@ class ItemListPresenter(val view: ItemListView, private val supplier: SupplierMo
 
     fun startListening() {
         // Listen for items belonging to this supplier
-//        repo.listenAllForSupplier(supplier.id!!) { items ->
-//            view.showItems(items)
-//        }
-        val dummyItems = listOf(
-            ItemModel(name="Test Item", description="Demo", amount=5, price=9.99)
-        )
-        view.showItems(dummyItems)
+        repo.listenAllForSupplier(supplier.id!!) { items ->
+            view.showItems(items)
+        }
     }
 
     fun doAddItem() {
