@@ -44,7 +44,7 @@ class ItemListView : AppCompatActivity(), ItemListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.item_edit_supplier -> presenter.doEditSupplier()
-            R.id.item_settings -> presenter.doOpenSettings()
+           // R.id.item_settings -> presenter.doOpenSettings()
         }
         return super.onOptionsItemSelected(item)
     }

@@ -2,6 +2,8 @@ package org.wit.supplyco.main
 
 import android.app.Application
 import com.google.firebase.FirebaseApp
+import org.wit.supplyco.models.ItemFirestoreRepo
+import org.wit.supplyco.models.ItemRepo
 import org.wit.supplyco.models.SupplierFirestoreRepo
 import org.wit.supplyco.models.SupplierRepo
 import timber.log.Timber
@@ -10,6 +12,7 @@ import timber.log.Timber.i
 class MainApp : Application() {
 
     lateinit var suppliers: SupplierRepo
+    lateinit var items: ItemRepo
 
     override fun onCreate() {
         super.onCreate()
@@ -17,6 +20,7 @@ class MainApp : Application() {
         // suppliers = SupplierJSONRepo(this)
         FirebaseApp.initializeApp(this)
         suppliers = SupplierFirestoreRepo()
+        items = ItemFirestoreRepo()
         i("SupplyCo started")
     }
 }
