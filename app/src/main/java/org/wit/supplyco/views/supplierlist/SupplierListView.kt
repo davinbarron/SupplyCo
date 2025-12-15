@@ -43,6 +43,10 @@ class SupplierListView : AppCompatActivity(), SupplierListener {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_list, menu)
+
+        menu.findItem(R.id.item_add_supplier)?.isVisible = true
+        menu.findItem(R.id.item_edit_supplier)?.isVisible = false
+
         return super.onCreateOptionsMenu(menu)
     }
 

@@ -37,4 +37,5 @@
     <string name="amount">Amount</string>
     <string name="hint_itemDescription">Item Description</string>
     <string name="toolbar_title_item_list">Items</string>
+    <string name="menu_editSupplier">Edit</string>
 </resources>
