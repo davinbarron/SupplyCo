@@ -9,7 +9,7 @@
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:background="@color/colourOne"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">
 
@@ -17,7 +17,7 @@
                 android:id="@+id/appBarLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/DarkCerulean"
+                android:background="@color/colourPrimary"
                 android:fitsSystemWindows="true"
                 app:elevation="0dip"
                 app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -172,7 +172,7 @@
                         android:id="@+id/buttonDeleteSupplier"
                         android:text="@string/button_deleteSupplier"
                         style="@style/Button"
-                        android:backgroundTint="@color/WeldonBlue"
+                        android:backgroundTint="@color/colourSecondary"
                         app:cornerRadius="10dp"
                         android:visibility="gone" />
             </LinearLayout>
