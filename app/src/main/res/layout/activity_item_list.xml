@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="org.wit.supplyco.views.itemlist.ItemListView">
+
+    <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:fitsSystemWindows="true"
+            app:elevation="0dip"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            style="@style/AppBarLayout">
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarItemList"
+                style="@style/ToolbarLayout">
+
+            <TextView
+                    android:text="@string/toolbar_title_item_list"
+                    style="@style/ToolbarTextView" />
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:background="@color/LightGold">
+
+        <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchViewItems"
+                style="@style/SearchView" />
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewItems"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                style="@style/RecyclerViewLayout"/>
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

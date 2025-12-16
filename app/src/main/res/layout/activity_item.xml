@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="org.wit.supplyco.views.item.ItemView">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+        <!-- Toolbar -->
+        <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/DarkCerulean"
+                android:fitsSystemWindows="true"
+                app:elevation="0dip"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbarAddItem"
+                    style="@style/ToolbarLayout">
+
+                <TextView
+                        android:id="@+id/itemActivityTitle"
+                        android:text="@string/toolbar_title_add_item"
+                        style="@style/ToolbarTextView" />
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <!-- Scrollable content -->
+        <ScrollView style="@style/ScrollView">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp">
+
+                    <ImageView
+                            android:id="@+id/itemImage"
+                            app:srcCompat="@drawable/ic_launcher_background"
+                            style="@style/ImageView" />
+                </LinearLayout>
+
+                <TextView
+                        android:text="@string/name"
+                        style="@style/HeadingTextView"
+                        android:paddingHorizontal="5dp" />
+
+                <EditText
+                        android:id="@+id/itemName"
+                        android:hint="@string/hint_itemName"
+                        style="@style/EditText" />
+
+                <TextView
+                        android:text="@string/description"
+                        style="@style/HeadingTextView"
+                        android:paddingHorizontal="5dp"
+                        android:layout_marginTop="12dp" />
+
+                <EditText
+                        android:id="@+id/itemDescription"
+                        android:hint="@string/hint_itemDescription"
+                        style="@style/EditText" />
+
+                <TextView
+                        android:text="@string/amount"
+                        style="@style/HeadingTextView"
+                        android:paddingHorizontal="5dp"
+                        android:layout_marginTop="12dp" />
+
+                <NumberPicker
+                        android:id="@+id/itemAmountPicker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal" />
+
+                <TextView
+                        android:text="@string/price"
+                        style="@style/HeadingTextView"
+                        android:paddingHorizontal="5dp"
+                        android:layout_marginTop="12dp" />
+
+                <EditText
+                        android:id="@+id/itemPrice"
+                        android:hint="@string/hint_itemPrice"
+                        android:inputType="numberDecimal"
+                        style="@style/EditText" />
+
+                <TextView
+                        android:text="@string/release_date"
+                        style="@style/HeadingTextView"
+                        android:paddingHorizontal="5dp"
+                        android:layout_marginTop="12dp" />
+
+                <Button
+                        android:id="@+id/itemReleaseDate"
+                        android:text="@string/button_pick_date"
+                        style="@style/Button"
+                        app:cornerRadius="10dp" />
+
+                <Button
+                        android:id="@+id/buttonAddItem"
+                        android:text="@string/button_addItem"
+                        style="@style/Button"
+                        app:cornerRadius="10dp"
+                        android:layout_marginTop="16dp" />
+
+                <Button
+                        android:id="@+id/buttonDeleteItem"
+                        android:text="@string/button_deleteItem"
+                        style="@style/Button"
+                        android:backgroundTint="@color/WeldonBlue"
+                        app:cornerRadius="10dp"
+                        android:visibility="gone"
+                        android:layout_marginTop="8dp" />
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

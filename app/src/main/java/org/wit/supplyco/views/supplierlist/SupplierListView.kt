@@ -40,13 +40,17 @@ class SupplierListView : AppCompatActivity(), SupplierListener {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_suppliers, menu)
+        menuInflater.inflate(R.menu.menu_list, menu)
+
+        menu.findItem(R.id.item_add)?.isVisible = true
+        menu.findItem(R.id.item_edit_supplier)?.isVisible = false
+
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.item_add_supplier -> presenter.doAddSupplier()
+            R.id.item_add -> presenter.doAddSupplier()
             R.id.item_settings -> presenter.doOpenSettings()
         }
         return super.onOptionsItemSelected(item)
@@ -58,7 +62,7 @@ class SupplierListView : AppCompatActivity(), SupplierListener {
     }
 
     override fun onSupplierClick(supplier: SupplierModel) {
-        presenter.doEditSupplier(supplier, position)
+        presenter.doOpenItemList(supplier)
     }
 
     fun showSuppliers(suppliers: List<SupplierModel>) {

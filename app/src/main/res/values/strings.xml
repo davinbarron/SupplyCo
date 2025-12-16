@@ -26,4 +26,23 @@
     <string name="email">Email</string>
     <string name="address">Address</string>
     <string name="select_image">Select Image</string>
+    <string name="button_deleteItem">Delete Item</string>
+    <string name="button_addItem">Add Item</string>
+    <string name="price">Price</string>
+    <string name="toolbar_title_add_item">Add New Item</string>
+    <string name="hint_itemName">Item Name</string>
+    <string name="button_pick_date">Pick a date</string>
+    <string name="release_date">Release Date</string>
+    <string name="hint_itemPrice">Item Price</string>
+    <string name="amount">Amount</string>
+    <string name="hint_itemDescription">Item Description</string>
+    <string name="toolbar_title_item_list">Items</string>
+    <string name="menu_editSupplier">Edit</string>
+    <string name="button_saveItem">Save Item Details</string>
+    <string name="toolbar_title_item_details">Item Details</string>
+    <string name="item_amount">Amount: %1$d</string>
+    <string name="item_price">Price: €%1$.2f</string>
+    <string name="item_release_date">Release Date: %1$s</string>
+    <string name="item_release_date_not_set">Not set</string>
+    <string name="delete_allItems">Delete All Items</string>
 </resources>
