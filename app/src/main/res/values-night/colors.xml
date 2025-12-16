@@ -1,0 +1,13 @@
+<resources>
+    <color name="colourPrimary">#FAF8D0</color>
+    <color name="colourSecondary">#76A2AA</color>
+
+    <color name="colourBackground">#0E4574</color>
+
+    <color name="colourOne">#0D0804</color>
+    <color name="colourTwo">#121212</color>
+    <color name="colourThree">#AF7812</color>
+    <color name="colourFour">#FFFFFF</color>
+
+    <color name="colourError">#FF474C</color>
+</resources>
