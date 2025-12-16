@@ -5,12 +5,12 @@
         <item
                 android:id="@+id/nav_suppliers"
                 android:title="@string/suppliers"
-                android:icon="@drawable/ic_suppliers"/>
+                android:icon="@drawable/ic_suppliers" />
 
         <item
                 android:id="@+id/nav_logout"
                 android:title="@string/logout"
-                android:icon="@android:drawable/ic_logout"/>
+                android:icon="@android:drawable/ic_logout" />
     </group>
 
 </menu>
