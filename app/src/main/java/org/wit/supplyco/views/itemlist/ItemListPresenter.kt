@@ -21,6 +21,16 @@ class ItemListPresenter(val view: ItemListView, private val supplier: SupplierMo
         }
     }
 
+    fun loadItems(query: String = "") {
+        if (query.isBlank()) {
+            startListening()
+        } else {
+            repo.findItemForSupplier(supplier.id!!, query) { items ->
+                view.showItems(items)
+            }
+        }
+    }
+
     fun doAddItem() {
         val intent = Intent(view, ItemView::class.java)
         intent.putExtra("supplier", supplier)

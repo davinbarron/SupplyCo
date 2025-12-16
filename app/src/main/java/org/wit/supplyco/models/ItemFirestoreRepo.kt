@@ -9,8 +9,10 @@ import timber.log.Timber.e
 class ItemFirestoreRepo : ItemRepo {
     private val db: FirebaseFirestore = Firebase.firestore
 
-    override fun findAllForSupplier(supplierId: String, callback: (List<ItemModel>) -> Unit) {
+    override fun findItemForSupplier(supplierId: String, query: String, callback: (List<ItemModel>) -> Unit) {
         db.collection("suppliers").document(supplierId).collection("items")
+            .whereGreaterThanOrEqualTo("name", query)
+            .whereLessThanOrEqualTo("name", query + '\uf8ff')
             .get()
             .addOnSuccessListener { result ->
                 val items = result.documents.mapNotNull { doc ->

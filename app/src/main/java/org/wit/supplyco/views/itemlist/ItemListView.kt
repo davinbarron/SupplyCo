@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.wit.supplyco.R
 import org.wit.supplyco.adapters.ItemAdapter
@@ -30,6 +31,14 @@ class ItemListView : AppCompatActivity(), ItemListener {
 
         binding.recyclerViewItems.layoutManager = LinearLayoutManager(this)
         presenter.startListening()
+
+        binding.searchViewItems.setOnQueryTextListener(object : OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean = false
+            override fun onQueryTextChange(newText: String?): Boolean {
+                presenter.loadItems(newText ?: "")
+                return true
+            }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
