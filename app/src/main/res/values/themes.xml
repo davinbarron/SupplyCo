@@ -6,4 +6,12 @@
     </style>
 
     <style name="Theme.SupplyCo" parent="Base.Theme.SupplyCo" />
+
+    <style name="Theme.SupplyCo.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_background</item>
+        <item name="windowSplashScreenAnimationDuration">2000</item>
+        <item name="postSplashScreenTheme">@style/Theme.SupplyCo</item>
+    </style>
+
 </resources>

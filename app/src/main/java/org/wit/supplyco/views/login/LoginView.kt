@@ -3,6 +3,7 @@ package org.wit.supplyco.views.login
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.google.android.material.snackbar.Snackbar
 import org.wit.supplyco.databinding.ActivityLoginBinding
 
@@ -12,6 +13,8 @@ class LoginView : AppCompatActivity() {
     lateinit var presenter: LoginPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val splashScreen = installSplashScreen()
+
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -28,6 +31,8 @@ class LoginView : AppCompatActivity() {
         binding.buttonRegister.setOnClickListener {
             presenter.doSignup()
         }
+
+        splashScreen.setKeepOnScreenCondition { false }
     }
 
     fun showMessage(message: String) {

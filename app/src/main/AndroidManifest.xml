@@ -20,7 +20,8 @@
             android:theme="@style/Theme.SupplyCo">
 
         <activity android:name=".views.login.LoginView"
-                android:exported="true">
+                android:exported="true"
+                android:theme="@style/Theme.SupplyCo.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
