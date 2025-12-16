@@ -53,6 +53,7 @@ dependencies {
     implementation(libs.timber)
     implementation(libs.picasso)
     implementation(libs.firebase.firestore)
+    implementation(libs.firebase.auth)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

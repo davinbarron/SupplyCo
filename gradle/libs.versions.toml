@@ -1,5 +1,5 @@
 [versions]
-agp = "8.13.1"
+agp = "8.13.2"
 gson = "2.13.2"
 kotlin = "2.2.21"
 coreKtx = "1.17.0"
@@ -8,13 +8,14 @@ junitVersion = "1.3.0"
 espressoCore = "3.7.0"
 appcompat = "1.7.1"
 material = "1.13.0"
-activity = "1.12.0"
+activity = "1.12.1"
 constraintlayout = "2.2.1"
 timber = "1.5.1"
 kotlinPlugin = "2.2.21"
 picasso = "2.71828"
 googleServices = "4.4.4"
-firebaseFirestore = "25.1.4"
+firebaseFirestore = "26.0.2"
+firebaseAuth = "24.0.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -28,7 +29,8 @@ androidx-activity = { group = "androidx.activity", name = "activity", version.re
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 timber = { module = "com.github.ajalt:timberkt", version.ref = "timber" }
 picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
-firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore-ktx", version.ref = "firebaseFirestore" }
+firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

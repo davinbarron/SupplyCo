@@ -12,23 +12,24 @@ class LoginPresenter(private val view: LoginView) {
     private val app: MainApp = view.application as MainApp
     private val repo: UserRepo = app.users
 
-    fun doLogin(username: String, password: String) {
-        if (username.isBlank() || password.isBlank()) {
-            view.showError("Please enter both username and password!")
+    fun doLogin(email: String, password: String) {
+        if (email.isBlank() || password.isBlank()) {
+            view.showError("Please enter both email and password!")
             return
         }
 
-        val success = repo.loginUser(username, password)
-
-        if (success) {
-            view.showMessage("Login successful!")
-            val intent = Intent(view, SupplierListView::class.java)
-            view.startActivity(intent)
-            view.finish()
-        } else {
-            view.showError("Invalid credentials!")
+        repo.loginUser(email, password) { success, error ->
+            if (success) {
+                view.showMessage("Login successful!")
+                val intent = Intent(view, SupplierListView::class.java)
+                view.startActivity(intent)
+                view.finish()
+            } else {
+                view.showError(error ?: "Invalid credentials!")
+            }
         }
     }
+
 
     fun doSignup() {
         val intent = Intent(view, SignupView::class.java)

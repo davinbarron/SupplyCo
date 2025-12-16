@@ -1,8 +1,8 @@
 package org.wit.supplyco.models
 
+import com.google.firebase.Firebase
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
+import com.google.firebase.firestore.firestore
 import timber.log.Timber.i
 import timber.log.Timber.e
 
