@@ -1,8 +1,11 @@
 package org.wit.supplyco.views.login
 
 import android.app.Activity
+import android.content.Intent
 import org.wit.supplyco.main.MainApp
 import org.wit.supplyco.models.UserRepo
+import org.wit.supplyco.views.signup.SignupView
+import org.wit.supplyco.views.supplierlist.SupplierListView
 
 class LoginPresenter(private val view: LoginView) {
 
@@ -19,14 +22,17 @@ class LoginPresenter(private val view: LoginView) {
 
         if (success) {
             view.showMessage("Login successful!")
-            view.closeWithResult(Activity.RESULT_OK)
+            val intent = Intent(view, SupplierListView::class.java)
+            view.startActivity(intent)
+            view.finish()
         } else {
             view.showError("Invalid credentials!")
         }
     }
 
     fun doSignup() {
-        view.navigateToSignup()
+        val intent = Intent(view, SignupView::class.java)
+        view.startActivity(intent)
     }
 
     fun doCancel() {

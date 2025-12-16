@@ -1,12 +1,10 @@
 package org.wit.supplyco.views.login
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import org.wit.supplyco.databinding.ActivityLoginBinding
-import org.wit.supplyco.views.signup.SignupView
 
 class LoginView : AppCompatActivity() {
 
@@ -43,10 +41,5 @@ class LoginView : AppCompatActivity() {
     fun closeWithResult(resultCode: Int) {
         setResult(resultCode)
         finish()
-    }
-
-    fun navigateToSignup() {
-        val intent = Intent(this, SignupView::class.java)
-        startActivity(intent)
     }
 }
