@@ -1,8 +1,10 @@
 package org.wit.supplyco.main
 
 import android.app.Application
+import com.google.firebase.Firebase
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 import org.wit.supplyco.models.ItemFirestoreRepo
 import org.wit.supplyco.models.ItemRepo
 import org.wit.supplyco.models.SupplierFirestoreRepo
@@ -26,7 +28,7 @@ class MainApp : Application() {
 
         suppliers = SupplierFirestoreRepo()
         items = ItemFirestoreRepo()
-        auth = FirebaseAuth.getInstance()
+        auth = Firebase.auth
         users = UserFirebaseRepo(auth)
 
         i("SupplyCo started")
