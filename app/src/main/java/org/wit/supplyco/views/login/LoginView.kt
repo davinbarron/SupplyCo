@@ -20,7 +20,7 @@ class LoginView : AppCompatActivity() {
 
         binding.buttonLogin.setOnClickListener {
             presenter.doLogin(
-                binding.editUsername.text.toString(),
+                binding.editEmail.text.toString(),
                 binding.editPassword.text.toString()
             )
         }
