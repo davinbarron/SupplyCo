@@ -47,15 +47,11 @@
                         android:text="@string/login"
                         app:cornerRadius="10dp"/>
 
-                <TextView
-                        android:id="@+id/textRegister"
-                        style="@style/DescriptionTextView"
+                <Button
+                        android:id="@+id/buttonRegister"
+                        style="@style/SecondaryButton"
                         android:text="@string/new_user_register"
-                        android:textColor="@android:color/holo_blue_dark"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:gravity="center"
-                        android:layout_marginTop="16dp"/>
+                        app:cornerRadius="10dp"/>
 
             </LinearLayout>
         </ScrollView>
