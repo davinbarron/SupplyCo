@@ -54,4 +54,6 @@
     <string name="register">Register</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="supplyco_register">SupplyCo Register</string>
+    <string name="logout">Logout</string>
+    <string name="suppliers">Suppliers</string>
 </resources>
