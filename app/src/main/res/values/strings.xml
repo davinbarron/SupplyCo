@@ -50,4 +50,8 @@
     <string name="password">Password</string>
     <string name="username">Username</string>
     <string name="supplyco_login">SupplyCo Login</string>
+    <string name="back_to_login">Back to Login</string>
+    <string name="register">Register</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="supplyco_register">SupplyCo Register</string>
 </resources>
