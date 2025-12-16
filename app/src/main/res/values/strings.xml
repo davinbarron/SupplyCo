@@ -56,4 +56,6 @@
     <string name="supplyco_register">SupplyCo Register</string>
     <string name="logout">Logout</string>
     <string name="suppliers">Suppliers</string>
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
 </resources>

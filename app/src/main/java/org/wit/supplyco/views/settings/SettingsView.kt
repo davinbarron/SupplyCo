@@ -2,12 +2,12 @@ package org.wit.supplyco.views.settings
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import org.wit.supplyco.R
 import org.wit.supplyco.databinding.ActivitySettingsBinding
+import org.wit.supplyco.views.base.BaseDrawerActivity
 
-class SettingsView : AppCompatActivity() {
+class SettingsView : BaseDrawerActivity() {
 
     private lateinit var binding: ActivitySettingsBinding
     lateinit var presenter: SettingsPresenter
@@ -15,8 +15,7 @@ class SettingsView : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySettingsBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        setSupportActionBar(binding.toolbarSettings)
+        setupDrawer(binding.root, binding.toolbarSettings)
 
         presenter = SettingsPresenter(this)
 

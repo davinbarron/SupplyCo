@@ -3,7 +3,6 @@ package org.wit.supplyco.views.supplierlist
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.wit.supplyco.R
@@ -11,8 +10,9 @@ import org.wit.supplyco.adapters.SupplierAdapter
 import org.wit.supplyco.adapters.SupplierListener
 import org.wit.supplyco.databinding.ActivitySupplierListBinding
 import org.wit.supplyco.models.SupplierModel
+import org.wit.supplyco.views.base.BaseDrawerActivity
 
-class SupplierListView : AppCompatActivity(), SupplierListener {
+class SupplierListView : BaseDrawerActivity(), SupplierListener {
 
     private lateinit var binding: ActivitySupplierListBinding
     lateinit var presenter: SupplierListPresenter
@@ -21,8 +21,7 @@ class SupplierListView : AppCompatActivity(), SupplierListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySupplierListBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        setSupportActionBar(binding.toolbar)
+        setupDrawer(binding.root, binding.toolbar)
 
         presenter = SupplierListPresenter(this)
 

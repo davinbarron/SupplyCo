@@ -3,7 +3,6 @@ package org.wit.supplyco.views.itemlist
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.wit.supplyco.R
@@ -12,8 +11,9 @@ import org.wit.supplyco.adapters.ItemListener
 import org.wit.supplyco.databinding.ActivityItemListBinding
 import org.wit.supplyco.models.ItemModel
 import org.wit.supplyco.models.SupplierModel
+import org.wit.supplyco.views.base.BaseDrawerActivity
 
-class ItemListView : AppCompatActivity(), ItemListener {
+class ItemListView : BaseDrawerActivity(), ItemListener {
 
     private lateinit var binding: ActivityItemListBinding
     lateinit var presenter: ItemListPresenter
@@ -22,8 +22,7 @@ class ItemListView : AppCompatActivity(), ItemListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityItemListBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        setSupportActionBar(binding.toolbarItemList)
+        setupDrawer(binding.root, binding.toolbarItemList)
 
         supplier = intent.getParcelableExtra("supplier")!!
 
