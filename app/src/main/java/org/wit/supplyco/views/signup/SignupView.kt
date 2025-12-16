@@ -5,17 +5,17 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
-import org.wit.supplyco.databinding.ActivityRegistrationBinding
+import org.wit.supplyco.databinding.ActivitySignupBinding
 import org.wit.supplyco.views.login.LoginView
 
 class SignupView : AppCompatActivity() {
 
-    private lateinit var binding: ActivityRegistrationBinding
+    private lateinit var binding: ActivitySignupBinding
     lateinit var presenter: SignupPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityRegistrationBinding.inflate(layoutInflater)
+        binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         presenter = SignupPresenter(this)

@@ -9,4 +9,8 @@ class UserStoreRepo : UserRepo {
         users.add(user)
         return true
     }
+
+    override fun loginUser(username: String, password: String): Boolean {
+        return users.any { it.username == username && it.password == password }
+    }
 }

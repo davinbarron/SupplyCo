@@ -3,12 +3,12 @@ package org.wit.supplyco.views.signup
 import android.app.Activity
 import org.wit.supplyco.main.MainApp
 import org.wit.supplyco.models.UserModel
-import org.wit.supplyco.models.UserRepository
+import org.wit.supplyco.models.UserRepo
 
 class SignupPresenter(private val view: SignupView) {
 
     private val app: MainApp = view.application as MainApp
-    private val repo: UserRepository = app.users
+    private val repo: UserRepo = app.users
 
     fun doRegister(username: String, email: String, password: String, confirmPassword: String) {
         if (username.isBlank() || email.isBlank() || password.isBlank() || confirmPassword.isBlank()) {
