@@ -80,8 +80,11 @@ class ItemView : AppCompatActivity() {
             ).show()
         }
 
-        if (savedInstanceState == null) animate()
-
+        if (savedInstanceState == null) {
+            animate()
+        } else {
+            showUiElements()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -126,6 +129,11 @@ class ItemView : AppCompatActivity() {
         finish()
     }
 
+    private fun showUiElements() {
+        binding.toolbarAddItem.visibility = View.VISIBLE
+        binding.itemScrollView.visibility = View.VISIBLE
+    }
+
     fun animate() {
         binding.root.post {
             val parent = binding.itemScrollView.parent as ViewGroup
@@ -136,8 +144,7 @@ class ItemView : AppCompatActivity() {
 
             TransitionManager.beginDelayedTransition(parent, transition)
 
-            binding.toolbarAddItem.visibility = View.VISIBLE
-            binding.itemScrollView.visibility = View.VISIBLE
+            showUiElements()
         }
     }
 }

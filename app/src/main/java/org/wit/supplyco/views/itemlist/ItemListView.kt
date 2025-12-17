@@ -35,6 +35,7 @@ class ItemListView : BaseDrawerActivity(), ItemListener {
         binding.recyclerViewItems.layoutManager = LinearLayoutManager(this)
         presenter.startListening()
 
+        //https://developer.android.com/reference/kotlin/android/widget/SearchView.OnQueryTextListener
         binding.searchViewItems.setOnQueryTextListener(object : OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean = false
             override fun onQueryTextChange(newText: String?): Boolean {
@@ -43,7 +44,11 @@ class ItemListView : BaseDrawerActivity(), ItemListener {
             }
         })
 
-        if (savedInstanceState == null) animate()
+        if (savedInstanceState == null) {
+            animate()
+        } else {
+            showUiElements()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -72,6 +77,12 @@ class ItemListView : BaseDrawerActivity(), ItemListener {
         binding.recyclerViewItems.adapter = ItemAdapter(items, this)
     }
 
+    private fun showUiElements() {
+        binding.toolbarItemList.visibility = View.VISIBLE
+        binding.recyclerViewItems.visibility = View.VISIBLE
+        binding.searchViewItems.visibility = View.VISIBLE
+    }
+
     fun animate() {
         binding.root.post {
             val parent = binding.recyclerViewItems.parent as ViewGroup
@@ -83,9 +94,7 @@ class ItemListView : BaseDrawerActivity(), ItemListener {
 
             TransitionManager.beginDelayedTransition(parent, transition)
 
-            binding.toolbarItemList.visibility = View.VISIBLE
-            binding.recyclerViewItems.visibility = View.VISIBLE
-            binding.searchViewItems.visibility = View.VISIBLE
+            showUiElements()
         }
     }
 }

@@ -41,7 +41,11 @@ class SupplierListView : BaseDrawerActivity(), SupplierListener {
             }
         })
 
-        if (savedInstanceState == null) animate()
+        if (savedInstanceState == null) {
+            animate()
+        } else {
+            showUiElements()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -78,6 +82,12 @@ class SupplierListView : BaseDrawerActivity(), SupplierListener {
         binding.recyclerView.adapter?.notifyItemRemoved(position)
     }
 
+    private fun showUiElements() {
+        binding.toolbar.visibility = View.VISIBLE
+        binding.recyclerView.visibility = View.VISIBLE
+        binding.searchView.visibility = View.VISIBLE
+    }
+
     fun animate() {
         binding.root.post {
             val parent = binding.recyclerView.parent as ViewGroup
@@ -89,9 +99,7 @@ class SupplierListView : BaseDrawerActivity(), SupplierListener {
 
             TransitionManager.beginDelayedTransition(parent, transition)
 
-            binding.toolbar.visibility = View.VISIBLE
-            binding.recyclerView.visibility = View.VISIBLE
-            binding.searchView.visibility = View.VISIBLE
+            showUiElements()
         }
     }
 }

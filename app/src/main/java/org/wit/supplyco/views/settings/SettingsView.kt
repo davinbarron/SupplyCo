@@ -48,10 +48,23 @@ class SettingsView : BaseDrawerActivity() {
 
         //https://developer.android.com/reference/android/widget/CompoundButton.OnCheckedChangeListener
         binding.switchNightMode.setOnCheckedChangeListener { _, isChecked ->
-            presenter.doToggleNightMode(isChecked)
+            if (binding.switchNightMode.isPressed) {
+                presenter.doToggleNightMode(isChecked)
+            }
         }
 
-        if (savedInstanceState == null) animate()
+        if (savedInstanceState == null) {
+            animate()
+        } else {
+            showUiElements()
+        }
+    }
+
+    // Helper to show elements without animation if needed
+    private fun showUiElements() {
+        binding.buttonDeleteAll.visibility = View.VISIBLE
+        binding.switchNightMode.visibility = View.VISIBLE
+        binding.toolbarSettings.visibility = View.VISIBLE
     }
 
     fun animate() {
@@ -67,9 +80,7 @@ class SettingsView : BaseDrawerActivity() {
 
             TransitionManager.beginDelayedTransition(parent, transition)
 
-            binding.buttonDeleteAll.visibility = View.VISIBLE
-            binding.switchNightMode.visibility = View.VISIBLE
-            binding.toolbarSettings.visibility = View.VISIBLE
+            showUiElements()
         }
     }
 

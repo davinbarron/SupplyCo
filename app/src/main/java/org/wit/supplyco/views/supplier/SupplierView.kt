@@ -44,7 +44,11 @@ class SupplierView : AppCompatActivity() {
             presenter.doDelete()
         }
 
-        if (savedInstanceState == null) animate()
+        if (savedInstanceState == null) {
+            animate()
+        } else {
+            showUiElements()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -90,6 +94,11 @@ class SupplierView : AppCompatActivity() {
         finish()
     }
 
+    private fun showUiElements() {
+        binding.toolbarAdd.visibility = View.VISIBLE
+        binding.supplierScrollView.visibility = View.VISIBLE
+    }
+
     fun animate() {
         binding.root.post {
             val parent = binding.supplierScrollView.parent as ViewGroup
@@ -100,8 +109,7 @@ class SupplierView : AppCompatActivity() {
 
             TransitionManager.beginDelayedTransition(parent, transition)
 
-            binding.toolbarAdd.visibility = View.VISIBLE
-            binding.supplierScrollView.visibility = View.VISIBLE
+            showUiElements()
         }
     }
 }

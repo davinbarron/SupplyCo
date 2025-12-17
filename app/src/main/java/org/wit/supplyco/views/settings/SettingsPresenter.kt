@@ -4,6 +4,7 @@ import android.app.Activity
 import androidx.appcompat.app.AppCompatDelegate
 import org.wit.supplyco.main.MainApp
 import org.wit.supplyco.models.SupplierRepo
+import androidx.core.content.edit
 
 class SettingsPresenter(private val view: SettingsView) {
 
@@ -23,13 +24,12 @@ class SettingsPresenter(private val view: SettingsView) {
         view.closeWithResult(Activity.RESULT_OK)
     }
 
-    fun doToggleNightMode(enabled: Boolean) {
-        if (enabled) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            view.showMessage("Night mode enabled")
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            view.showMessage("Night mode disabled")
-        }
+    fun doToggleNightMode(isDark: Boolean) {
+        val mode = if (isDark) AppCompatDelegate.MODE_NIGHT_YES
+        else AppCompatDelegate.MODE_NIGHT_NO
+        AppCompatDelegate.setDefaultNightMode(mode)
+
+        val message = if (isDark) "Dark mode enabled" else "Light mode enabled"
+        view.showMessage(message)
     }
 }
