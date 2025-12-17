@@ -20,12 +20,12 @@ class EditLocationView : AppCompatActivity(), OnMapReadyCallback,
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_supplier_map)
+        setContentView(R.layout.activity_map)
         presenter = EditLocationPresenter(this)
         location = intent.extras?.getParcelable<Location>("location")!!
 
         val mapFragment = supportFragmentManager
-            .findFragmentById(R.id.content) as SupportMapFragment
+            .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
         onBackPressedDispatcher.addCallback(this) {

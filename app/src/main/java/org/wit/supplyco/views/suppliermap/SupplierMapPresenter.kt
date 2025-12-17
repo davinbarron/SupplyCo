@@ -6,24 +6,31 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import org.wit.supplyco.main.MainApp
+import org.wit.supplyco.models.SupplierModel
 
 class SupplierMapPresenter(val view: SupplierMapView) {
-    var app: MainApp = view.application as MainApp
+    private val app: MainApp = view.application as MainApp
 
     fun doPopulateMap(map: GoogleMap) {
         map.uiSettings.isZoomControlsEnabled = true
         map.setOnMarkerClickListener(view)
-        app.suppliers.findAll().forEach {
-            val loc = LatLng(it.lat, it.lng)
-            val options = MarkerOptions().title(it.name).position(loc)
-            map.addMarker(options)?.tag = it.id
-            map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, it.zoom))
+
+        app.suppliers.listenAll { suppliers ->
+            map.clear()
+            suppliers.forEach { supplier ->
+                val loc = LatLng(supplier.lat, supplier.lng)
+                val options = MarkerOptions()
+                    .title(supplier.name)
+                    .position(loc)
+
+                map.addMarker(options)?.tag = supplier
+                map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, supplier.zoom))
+            }
         }
     }
 
     fun doMarkerSelected(marker: Marker) {
-        val tag = marker.tag as String // Firestore IDs are strings
-        val supplier = app.suppliers.findById(tag)
-        if (supplier != null) view.showSupplier(supplier)
+        val supplier = marker.tag as SupplierModel
+        view.showSupplier(supplier)
     }
 }

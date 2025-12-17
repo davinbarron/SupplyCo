@@ -21,7 +21,7 @@
 
         <meta-data
                 android:name="com.google.android.geo.API_KEY"
-                android:value="YOUR_API_KEY" />
+                android:value="@string/MAPS_API_KEY" />
 
         <activity
                 android:name=".views.login.LoginView"
@@ -40,10 +40,9 @@
         <activity android:name=".views.itemlist.ItemListView" />
         <activity android:name=".views.item.ItemView" />
         <activity android:name=".views.settings.SettingsView" />
-        <activity
-                android:name=".views.suppliermap.SupplierMapPresenter"
-                android:exported="false"
-                android:label="@string/title_activity_maps" />
+        <activity android:name=".views.suppliermap.SupplierMapView"
+                android:exported="false" />
+        <activity android:name=".views.editlocation.EditLocationView" />
     </application>
 
 </manifest>
