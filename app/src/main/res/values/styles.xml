@@ -6,7 +6,7 @@
 <resources>
     <style name="EditText">
         <item name="android:background">@drawable/rounded_rectangles</item>
-        <item name="android:textColor">@color/SmokeyBlack</item>
+        <item name="android:textColor">@color/colourFour</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">48dp</item>
         <item name="android:layout_margin">12dp</item>
@@ -18,8 +18,8 @@
     </style>
 
     <style name="Button">
-        <item name="android:backgroundTint">@color/DarkCerulean</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:backgroundTint">@color/colourPrimary</item>
+        <item name="android:textColor">@color/colourOne</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">20dp</item>
@@ -29,8 +29,8 @@
     </style>
 
     <style name="SecondaryButton">
-        <item name="android:backgroundTint">@color/WeldonBlue</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:backgroundTint">@color/colourSecondary</item>
+        <item name="android:textColor">@color/colourOne</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">16dp</item>
@@ -41,7 +41,7 @@
     </style>
 
     <style name="ToolbarTextView">
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/colourOne</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">start</item>
@@ -50,7 +50,7 @@
     </style>
 
     <style name="HeadingTextView">
-        <item name="android:textColor">@color/DarkCerulean</item>
+        <item name="android:textColor">@color/colourPrimary</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textStyle">bold</item>
@@ -58,7 +58,7 @@
     </style>
 
     <style name="DescriptionTextView">
-        <item name="android:textColor">@color/SmokeyBlack</item>
+        <item name="android:textColor">@color/colourFour</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">14sp</item>
@@ -66,7 +66,7 @@
     </style>
 
     <style name="ScrollView">
-        <item name="android:background">@color/LightGold</item>
+        <item name="android:background">@color/colourBackground</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:fillViewport">true</item>
@@ -74,7 +74,7 @@
     </style>
 
     <style name="AppBarLayout">
-        <item name="android:background">@color/DarkCerulean</item>
+        <item name="android:background">@color/colourPrimary</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
@@ -88,14 +88,14 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:scrollbars">vertical</item>
-        <item name="android:background">@color/LightGold</item>
+        <item name="android:background">@color/colourBackground</item>
     </style>
 
     <style name="SearchView">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@color/white</item>
-        <item name="android:textColor">@color/SmokeyBlack</item>
+        <item name="android:background">@color/colourOne</item>
+        <item name="android:textColor">@color/colourFour</item>
         <item name="android:queryHint">Search suppliers...</item>
         <item name="android:layout_margin">10dp</item>
     </style>

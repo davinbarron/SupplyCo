@@ -3,9 +3,12 @@ package org.wit.supplyco.views.item
 import android.app.DatePickerDialog
 import android.net.Uri
 import android.os.Bundle
+import android.transition.TransitionInflater
+import android.transition.TransitionManager
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
@@ -77,6 +80,11 @@ class ItemView : AppCompatActivity() {
             ).show()
         }
 
+        if (savedInstanceState == null) {
+            animate()
+        } else {
+            showUiElements()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -119,5 +127,24 @@ class ItemView : AppCompatActivity() {
     fun closeWithResult(resultCode: Int) {
         setResult(resultCode)
         finish()
+    }
+
+    private fun showUiElements() {
+        binding.toolbarAddItem.visibility = View.VISIBLE
+        binding.itemScrollView.visibility = View.VISIBLE
+    }
+
+    fun animate() {
+        binding.root.post {
+            val parent = binding.itemScrollView.parent as ViewGroup
+            val transition = TransitionInflater.from(this).inflateTransition(R.transition.scene_enter)
+
+            transition.addTarget(binding.toolbarAddItem)
+            transition.addTarget(binding.itemScrollView)
+
+            TransitionManager.beginDelayedTransition(parent, transition)
+
+            showUiElements()
+        }
     }
 }

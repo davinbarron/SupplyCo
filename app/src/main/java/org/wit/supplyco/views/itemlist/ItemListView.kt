@@ -1,9 +1,12 @@
 package org.wit.supplyco.views.itemlist
 
 import android.os.Bundle
+import android.transition.TransitionInflater
+import android.transition.TransitionManager
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.wit.supplyco.R
@@ -12,8 +15,9 @@ import org.wit.supplyco.adapters.ItemListener
 import org.wit.supplyco.databinding.ActivityItemListBinding
 import org.wit.supplyco.models.ItemModel
 import org.wit.supplyco.models.SupplierModel
+import org.wit.supplyco.views.base.BaseDrawerActivity
 
-class ItemListView : AppCompatActivity(), ItemListener {
+class ItemListView : BaseDrawerActivity(), ItemListener {
 
     private lateinit var binding: ActivityItemListBinding
     lateinit var presenter: ItemListPresenter
@@ -22,8 +26,7 @@ class ItemListView : AppCompatActivity(), ItemListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityItemListBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        setSupportActionBar(binding.toolbarItemList)
+        setupDrawer(binding.root, binding.toolbarItemList)
 
         supplier = intent.getParcelableExtra("supplier")!!
 
@@ -32,6 +35,7 @@ class ItemListView : AppCompatActivity(), ItemListener {
         binding.recyclerViewItems.layoutManager = LinearLayoutManager(this)
         presenter.startListening()
 
+        //https://developer.android.com/reference/kotlin/android/widget/SearchView.OnQueryTextListener
         binding.searchViewItems.setOnQueryTextListener(object : OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean = false
             override fun onQueryTextChange(newText: String?): Boolean {
@@ -39,6 +43,12 @@ class ItemListView : AppCompatActivity(), ItemListener {
                 return true
             }
         })
+
+        if (savedInstanceState == null) {
+            animate()
+        } else {
+            showUiElements()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -65,5 +75,26 @@ class ItemListView : AppCompatActivity(), ItemListener {
 
     fun showItems(items: List<ItemModel>) {
         binding.recyclerViewItems.adapter = ItemAdapter(items, this)
+    }
+
+    private fun showUiElements() {
+        binding.toolbarItemList.visibility = View.VISIBLE
+        binding.recyclerViewItems.visibility = View.VISIBLE
+        binding.searchViewItems.visibility = View.VISIBLE
+    }
+
+    fun animate() {
+        binding.root.post {
+            val parent = binding.recyclerViewItems.parent as ViewGroup
+            val transition = TransitionInflater.from(this).inflateTransition(R.transition.scene_enter)
+
+            transition.addTarget(binding.toolbarItemList)
+            transition.addTarget(binding.recyclerViewItems)
+            transition.addTarget(binding.searchViewItems)
+
+            TransitionManager.beginDelayedTransition(parent, transition)
+
+            showUiElements()
+        }
     }
 }

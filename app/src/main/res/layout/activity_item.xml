@@ -10,7 +10,7 @@
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:background="@color/colourOne"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">
 
@@ -19,14 +19,15 @@
                 android:id="@+id/appBarLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/DarkCerulean"
+                android:background="@color/colourPrimary"
                 android:fitsSystemWindows="true"
                 app:elevation="0dip"
                 app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
             <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbarAddItem"
-                    style="@style/ToolbarLayout">
+                    style="@style/ToolbarLayout"
+                    android:visibility="invisible">
 
                 <TextView
                         android:id="@+id/itemActivityTitle"
@@ -36,7 +37,10 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <!-- Scrollable content -->
-        <ScrollView style="@style/ScrollView">
+        <ScrollView
+                android:id="@+id/itemScrollView"
+                style="@style/ScrollView"
+                android:visibility="invisible">
 
             <LinearLayout
                     android:layout_width="match_parent"
@@ -116,13 +120,13 @@
                         android:text="@string/button_addItem"
                         style="@style/Button"
                         app:cornerRadius="10dp"
-                        android:layout_marginTop="16dp" />
+                        android:layout_marginTop="16dp"/>
 
                 <Button
                         android:id="@+id/buttonDeleteItem"
                         android:text="@string/button_deleteItem"
                         style="@style/Button"
-                        android:backgroundTint="@color/WeldonBlue"
+                        android:backgroundTint="@color/colourSecondary"
                         app:cornerRadius="10dp"
                         android:visibility="gone"
                         android:layout_marginTop="8dp" />

@@ -1,13 +1,18 @@
 package org.wit.supplyco.views.settings
 
 import android.os.Bundle
+import android.transition.TransitionInflater
+import android.transition.TransitionManager
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.material.snackbar.Snackbar
 import org.wit.supplyco.R
 import org.wit.supplyco.databinding.ActivitySettingsBinding
+import org.wit.supplyco.views.base.BaseDrawerActivity
 
-class SettingsView : AppCompatActivity() {
+class SettingsView : BaseDrawerActivity() {
 
     private lateinit var binding: ActivitySettingsBinding
     lateinit var presenter: SettingsPresenter
@@ -15,8 +20,7 @@ class SettingsView : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySettingsBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        setSupportActionBar(binding.toolbarSettings)
+        setupDrawer(binding.root, binding.toolbarSettings)
 
         presenter = SettingsPresenter(this)
 
@@ -36,6 +40,47 @@ class SettingsView : AppCompatActivity() {
             binding.buttonDeleteAll.setOnClickListener {
                 presenter.doDeleteAllSuppliers()
             }
+        }
+
+        // https://developer.android.com/develop/ui/views/theming/darktheme
+        val currentMode = AppCompatDelegate.getDefaultNightMode()
+        binding.switchNightMode.isChecked = (currentMode == AppCompatDelegate.MODE_NIGHT_YES)
+
+        //https://developer.android.com/reference/android/widget/CompoundButton.OnCheckedChangeListener
+        binding.switchNightMode.setOnCheckedChangeListener { _, isChecked ->
+            if (binding.switchNightMode.isPressed) {
+                presenter.doToggleNightMode(isChecked)
+            }
+        }
+
+        if (savedInstanceState == null) {
+            animate()
+        } else {
+            showUiElements()
+        }
+    }
+
+    // Helper to show elements without animation if needed
+    private fun showUiElements() {
+        binding.buttonDeleteAll.visibility = View.VISIBLE
+        binding.switchNightMode.visibility = View.VISIBLE
+        binding.toolbarSettings.visibility = View.VISIBLE
+    }
+
+    fun animate() {
+        // https://developer.android.com/develop/ui/views/animations/transitions#kotlin
+        binding.root.post {
+            val parent = binding.buttonDeleteAll.parent as ViewGroup
+
+            val transition = TransitionInflater.from(this).inflateTransition(R.transition.scene_enter)
+
+            transition.addTarget(binding.buttonDeleteAll)
+            transition.addTarget(binding.switchNightMode)
+            transition.addTarget(binding.toolbarSettings)
+
+            TransitionManager.beginDelayedTransition(parent, transition)
+
+            showUiElements()
         }
     }
 

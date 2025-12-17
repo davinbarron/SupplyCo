@@ -1,9 +1,12 @@
 package org.wit.supplyco.views.supplierlist
 
 import android.os.Bundle
+import android.transition.TransitionInflater
+import android.transition.TransitionManager
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.wit.supplyco.R
@@ -11,8 +14,9 @@ import org.wit.supplyco.adapters.SupplierAdapter
 import org.wit.supplyco.adapters.SupplierListener
 import org.wit.supplyco.databinding.ActivitySupplierListBinding
 import org.wit.supplyco.models.SupplierModel
+import org.wit.supplyco.views.base.BaseDrawerActivity
 
-class SupplierListView : AppCompatActivity(), SupplierListener {
+class SupplierListView : BaseDrawerActivity(), SupplierListener {
 
     private lateinit var binding: ActivitySupplierListBinding
     lateinit var presenter: SupplierListPresenter
@@ -21,8 +25,7 @@ class SupplierListView : AppCompatActivity(), SupplierListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySupplierListBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        setSupportActionBar(binding.toolbar)
+        setupDrawer(binding.root, binding.toolbar)
 
         presenter = SupplierListPresenter(this)
 
@@ -37,6 +40,12 @@ class SupplierListView : AppCompatActivity(), SupplierListener {
                 return true
             }
         })
+
+        if (savedInstanceState == null) {
+            animate()
+        } else {
+            showUiElements()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -71,5 +80,26 @@ class SupplierListView : AppCompatActivity(), SupplierListener {
 
     fun onDelete(position: Int) {
         binding.recyclerView.adapter?.notifyItemRemoved(position)
+    }
+
+    private fun showUiElements() {
+        binding.toolbar.visibility = View.VISIBLE
+        binding.recyclerView.visibility = View.VISIBLE
+        binding.searchView.visibility = View.VISIBLE
+    }
+
+    fun animate() {
+        binding.root.post {
+            val parent = binding.recyclerView.parent as ViewGroup
+            val transition = TransitionInflater.from(this).inflateTransition(R.transition.scene_enter)
+
+            transition.addTarget(binding.toolbar)
+            transition.addTarget(binding.recyclerView)
+            transition.addTarget(binding.searchView)
+
+            TransitionManager.beginDelayedTransition(parent, transition)
+
+            showUiElements()
+        }
     }
 }
