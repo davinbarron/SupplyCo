@@ -8,58 +8,64 @@
         android:layout_height="match_parent"
         tools:context="org.wit.supplyco.views.settings.SettingsView">
 
-    <RelativeLayout
+    <FrameLayout
+            android:id="@+id/scene_root"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="@color/colourOne">
+            android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.AppBarLayout
-                android:id="@+id/appBarLayout"
-                android:fitsSystemWindows="true"
-                app:elevation="0dip"
-                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                style="@style/AppBarLayout">
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@color/colourOne">
 
-            <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbarSettings"
-                    style="@style/ToolbarLayout">
+            <com.google.android.material.appbar.AppBarLayout
+                    android:id="@+id/appBarLayout"
+                    android:fitsSystemWindows="true"
+                    app:elevation="0dip"
+                    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                    style="@style/AppBarLayout">
 
-                <TextView
-                        android:text="@string/toolbar_title_settings"
-                        style="@style/ToolbarTextView" />
+                <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/toolbarSettings"
+                        style="@style/ToolbarLayout">
 
-            </androidx.appcompat.widget.Toolbar>
+                    <TextView
+                            android:text="@string/toolbar_title_settings"
+                            style="@style/ToolbarTextView" />
 
-        </com.google.android.material.appbar.AppBarLayout>
+                </androidx.appcompat.widget.Toolbar>
 
-        <ScrollView
-                style="@style/ScrollView">
+            </com.google.android.material.appbar.AppBarLayout>
 
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+            <ScrollView
+                    style="@style/ScrollView">
 
-                <androidx.appcompat.widget.SwitchCompat
-                        android:id="@+id/switchNightMode"
-                        android:layout_width="133dp"
+                <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/enable_night_mode"
-                        android:textSize="16sp"
-                        android:layout_margin="20dp" />
+                        android:orientation="vertical">
 
-                <Button
-                        android:id="@+id/buttonDeleteAll"
-                        android:text="@string/delete_allSuppliers"
-                        style="@style/Button"
-                        app:cornerRadius="10dp"/>
+                    <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/switchNightMode"
+                            android:layout_width="133dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/enable_night_mode"
+                            android:textSize="16sp"
+                            android:layout_margin="20dp" />
 
-            </LinearLayout>
-        </ScrollView>
+                    <Button
+                            android:id="@+id/buttonDeleteAll"
+                            style="@style/Button"
+                            android:text="@string/delete_allSuppliers"
+                            android:visibility="invisible"
+                            app:cornerRadius="10dp" />
 
-    </RelativeLayout>
+                </LinearLayout>
+            </ScrollView>
+        </RelativeLayout>
+    </FrameLayout>
 
     <com.google.android.material.navigation.NavigationView
             android:id="@+id/navigationView"

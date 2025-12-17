@@ -1,6 +1,10 @@
 package org.wit.supplyco.views.settings
 
 import android.os.Bundle
+import android.transition.TransitionInflater
+import android.transition.TransitionManager
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.material.snackbar.Snackbar
@@ -45,6 +49,18 @@ class SettingsView : BaseDrawerActivity() {
         //https://developer.android.com/reference/android/widget/CompoundButton.OnCheckedChangeListener
         binding.switchNightMode.setOnCheckedChangeListener { _, isChecked ->
             presenter.doToggleNightMode(isChecked)
+        }
+
+        // https://developer.android.com/develop/ui/views/animations/transitions#kotlin
+        binding.buttonDeleteAll.visibility = View.INVISIBLE
+
+        binding.root.post {
+            val parent = binding.buttonDeleteAll.parent as ViewGroup
+
+            val slide = TransitionInflater.from(this).inflateTransition(R.transition.slide)
+
+            TransitionManager.beginDelayedTransition(parent, slide)
+            binding.buttonDeleteAll.visibility = View.VISIBLE
         }
     }
 
