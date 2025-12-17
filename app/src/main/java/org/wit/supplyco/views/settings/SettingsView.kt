@@ -51,16 +51,34 @@ class SettingsView : BaseDrawerActivity() {
             presenter.doToggleNightMode(isChecked)
         }
 
-        // https://developer.android.com/develop/ui/views/animations/transitions#kotlin
-        binding.buttonDeleteAll.visibility = View.INVISIBLE
+        if (savedInstanceState == null) {
+            animate()
+        } else {
+            binding.buttonDeleteAll.visibility = View.VISIBLE
+            binding.switchNightMode.visibility = View.VISIBLE
+            binding.toolbarSettings.visibility = View.VISIBLE
+        }
+    }
 
+    fun animate() {
+        // https://developer.android.com/develop/ui/views/animations/transitions#kotlin
         binding.root.post {
             val parent = binding.buttonDeleteAll.parent as ViewGroup
 
-            val slide = TransitionInflater.from(this).inflateTransition(R.transition.slide)
+            val slideBottom = TransitionInflater.from(this).inflateTransition(R.transition.bottom_slide)
+            slideBottom.addTarget(binding.buttonDeleteAll)
+            slideBottom.addTarget(binding.switchNightMode)
 
-            TransitionManager.beginDelayedTransition(parent, slide)
+            // Top slide for toolbar
+            val slideTop = TransitionInflater.from(this).inflateTransition(R.transition.top_slide)
+            slideTop.addTarget(binding.toolbarSettings)
+
+            TransitionManager.beginDelayedTransition(parent, slideBottom)
+            TransitionManager.beginDelayedTransition(parent, slideTop)
+
             binding.buttonDeleteAll.visibility = View.VISIBLE
+            binding.switchNightMode.visibility = View.VISIBLE
+            binding.toolbarSettings.visibility = View.VISIBLE
         }
     }
 
