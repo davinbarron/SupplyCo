@@ -1,8 +1,12 @@
 package org.wit.supplyco.views.supplierlist
 
 import android.os.Bundle
+import android.transition.TransitionInflater
+import android.transition.TransitionManager
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.wit.supplyco.R
@@ -36,6 +40,8 @@ class SupplierListView : BaseDrawerActivity(), SupplierListener {
                 return true
             }
         })
+
+        if (savedInstanceState == null) animate()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -70,5 +76,22 @@ class SupplierListView : BaseDrawerActivity(), SupplierListener {
 
     fun onDelete(position: Int) {
         binding.recyclerView.adapter?.notifyItemRemoved(position)
+    }
+
+    fun animate() {
+        binding.root.post {
+            val parent = binding.recyclerView.parent as ViewGroup
+            val transition = TransitionInflater.from(this).inflateTransition(R.transition.scene_enter)
+
+            transition.addTarget(binding.toolbar)
+            transition.addTarget(binding.recyclerView)
+            transition.addTarget(binding.searchView)
+
+            TransitionManager.beginDelayedTransition(parent, transition)
+
+            binding.toolbar.visibility = View.VISIBLE
+            binding.recyclerView.visibility = View.VISIBLE
+            binding.searchView.visibility = View.VISIBLE
+        }
     }
 }

@@ -2,9 +2,12 @@ package org.wit.supplyco.views.supplier
 
 import android.net.Uri
 import android.os.Bundle
+import android.transition.TransitionInflater
+import android.transition.TransitionManager
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
@@ -40,6 +43,8 @@ class SupplierView : AppCompatActivity() {
         binding.buttonDeleteSupplier.setOnClickListener {
             presenter.doDelete()
         }
+
+        if (savedInstanceState == null) animate()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -83,5 +88,20 @@ class SupplierView : AppCompatActivity() {
     fun closeWithResult(resultCode: Int) {
         setResult(resultCode)
         finish()
+    }
+
+    fun animate() {
+        binding.root.post {
+            val parent = binding.buttonAddSupplier.parent as ViewGroup
+            val transition = TransitionInflater.from(this).inflateTransition(R.transition.scene_enter)
+
+            transition.addTarget(binding.toolbarAdd)
+            transition.addTarget(binding.buttonAddSupplier)
+
+            TransitionManager.beginDelayedTransition(parent, transition)
+
+            binding.toolbarAdd.visibility = View.VISIBLE
+            binding.buttonAddSupplier.visibility = View.VISIBLE
+        }
     }
 }

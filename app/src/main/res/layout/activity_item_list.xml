@@ -21,7 +21,8 @@
 
             <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbarItemList"
-                    style="@style/ToolbarLayout">
+                    style="@style/ToolbarLayout"
+                    android:visibility="invisible">
 
                 <TextView
                         android:text="@string/toolbar_title_item_list"
@@ -39,12 +40,14 @@
 
             <androidx.appcompat.widget.SearchView
                     android:id="@+id/searchViewItems"
-                    style="@style/SearchView" />
+                    style="@style/SearchView"
+                    android:visibility="invisible"/>
 
             <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerViewItems"
                     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                    style="@style/RecyclerViewLayout"/>
+                    style="@style/RecyclerViewLayout"
+                    android:visibility="invisible"/>
         </LinearLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

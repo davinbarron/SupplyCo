@@ -51,13 +51,7 @@ class SettingsView : BaseDrawerActivity() {
             presenter.doToggleNightMode(isChecked)
         }
 
-        if (savedInstanceState == null) {
-            animate()
-        } else {
-            binding.buttonDeleteAll.visibility = View.VISIBLE
-            binding.switchNightMode.visibility = View.VISIBLE
-            binding.toolbarSettings.visibility = View.VISIBLE
-        }
+        if (savedInstanceState == null) animate()
     }
 
     fun animate() {
@@ -65,16 +59,13 @@ class SettingsView : BaseDrawerActivity() {
         binding.root.post {
             val parent = binding.buttonDeleteAll.parent as ViewGroup
 
-            val slideBottom = TransitionInflater.from(this).inflateTransition(R.transition.bottom_slide)
-            slideBottom.addTarget(binding.buttonDeleteAll)
-            slideBottom.addTarget(binding.switchNightMode)
+            val transition = TransitionInflater.from(this).inflateTransition(R.transition.scene_enter)
 
-            // Top slide for toolbar
-            val slideTop = TransitionInflater.from(this).inflateTransition(R.transition.top_slide)
-            slideTop.addTarget(binding.toolbarSettings)
+            transition.addTarget(binding.buttonDeleteAll)
+            transition.addTarget(binding.switchNightMode)
+            transition.addTarget(binding.toolbarSettings)
 
-            TransitionManager.beginDelayedTransition(parent, slideBottom)
-            TransitionManager.beginDelayedTransition(parent, slideTop)
+            TransitionManager.beginDelayedTransition(parent, transition)
 
             binding.buttonDeleteAll.visibility = View.VISIBLE
             binding.switchNightMode.visibility = View.VISIBLE

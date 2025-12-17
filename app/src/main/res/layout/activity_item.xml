@@ -26,7 +26,8 @@
 
             <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbarAddItem"
-                    style="@style/ToolbarLayout">
+                    style="@style/ToolbarLayout"
+                    android:visibility="invisible">
 
                 <TextView
                         android:id="@+id/itemActivityTitle"
@@ -116,7 +117,8 @@
                         android:text="@string/button_addItem"
                         style="@style/Button"
                         app:cornerRadius="10dp"
-                        android:layout_marginTop="16dp" />
+                        android:layout_marginTop="16dp"
+                        android:visibility="invisible"/>
 
                 <Button
                         android:id="@+id/buttonDeleteItem"
