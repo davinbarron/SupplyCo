@@ -7,36 +7,38 @@
         android:layout_height="match_parent"
         tools:context="org.wit.supplyco.views.suppliermap.SupplierMapView">
 
-    <RelativeLayout
+    <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:fitsSystemWindows="true"
+            app:elevation="0dip"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            style="@style/AppBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colourOne"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            android:visibility="invisible">
 
-        <com.google.android.material.appbar.AppBarLayout
-                android:id="@+id/appBarLayout"
-                android:fitsSystemWindows="true"
-                app:elevation="0dip"
-                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                style="@style/AppBarLayout">
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarMap"
+                style="@style/ToolbarLayout">
 
-            <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbarMap"
-                    style="@style/ToolbarLayout">
+            <TextView
+                    android:id="@+id/mapActivityTitle"
+                    android:text="@string/toolbar_title_supplier_map"
+                    style="@style/ToolbarTextView" />
 
-                <TextView
-                        android:id="@+id/mapActivityTitle"
-                        android:text="@string/toolbar_title_supplier_map"
-                        style="@style/ToolbarTextView" />
+        </androidx.appcompat.widget.Toolbar>
 
-            </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
 
-        </com.google.android.material.appbar.AppBarLayout>
+    <include
+            android:id="@+id/contentSupplierMap"
+            layout="@layout/content_supplier_map"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-        <include
-                android:id="@+id/contentSupplierMap"
-                layout="@layout/content_supplier_map" />
-
-    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

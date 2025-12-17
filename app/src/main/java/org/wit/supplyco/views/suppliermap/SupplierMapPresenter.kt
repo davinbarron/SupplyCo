@@ -15,6 +15,10 @@ class SupplierMapPresenter(val view: SupplierMapView) {
         map.uiSettings.isZoomControlsEnabled = true
         map.setOnMarkerClickListener(view)
 
+        map.setOnMapClickListener {
+            view.hideSupplierCard()
+        }
+
         app.suppliers.listenAll { suppliers ->
             map.clear()
             suppliers.forEach { supplier ->
