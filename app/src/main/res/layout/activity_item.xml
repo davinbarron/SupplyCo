@@ -37,7 +37,10 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <!-- Scrollable content -->
-        <ScrollView style="@style/ScrollView">
+        <ScrollView
+                android:id="@+id/itemScrollView"
+                style="@style/ScrollView"
+                android:visibility="invisible">
 
             <LinearLayout
                     android:layout_width="match_parent"
@@ -117,8 +120,7 @@
                         android:text="@string/button_addItem"
                         style="@style/Button"
                         app:cornerRadius="10dp"
-                        android:layout_marginTop="16dp"
-                        android:visibility="invisible"/>
+                        android:layout_marginTop="16dp"/>
 
                 <Button
                         android:id="@+id/buttonDeleteItem"

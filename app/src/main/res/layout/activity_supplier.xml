@@ -34,12 +34,16 @@
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <ScrollView style="@style/ScrollView">
+        <ScrollView
+                android:id="@+id/supplierScrollView"
+                style="@style/ScrollView"
+                android:visibility="invisible">
 
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="invisible">
 
                 <LinearLayout
                         android:orientation="horizontal"
@@ -167,8 +171,7 @@
                         android:id="@+id/buttonAddSupplier"
                         android:text="@string/button_addSupplier"
                         style="@style/Button"
-                        app:cornerRadius="10dp"
-                        android:visibility="invisible"/>
+                        app:cornerRadius="10dp" />
 
                 <Button
                         android:id="@+id/buttonDeleteSupplier"

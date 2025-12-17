@@ -128,16 +128,16 @@ class ItemView : AppCompatActivity() {
 
     fun animate() {
         binding.root.post {
-            val parent = binding.buttonAddItem.parent as ViewGroup
+            val parent = binding.itemScrollView.parent as ViewGroup
             val transition = TransitionInflater.from(this).inflateTransition(R.transition.scene_enter)
 
             transition.addTarget(binding.toolbarAddItem)
-            transition.addTarget(binding.buttonAddItem)
+            transition.addTarget(binding.itemScrollView)
 
             TransitionManager.beginDelayedTransition(parent, transition)
 
             binding.toolbarAddItem.visibility = View.VISIBLE
-            binding.buttonAddItem.visibility = View.VISIBLE
+            binding.itemScrollView.visibility = View.VISIBLE
         }
     }
 }

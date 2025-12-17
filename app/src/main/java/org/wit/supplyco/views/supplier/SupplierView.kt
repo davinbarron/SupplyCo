@@ -92,16 +92,16 @@ class SupplierView : AppCompatActivity() {
 
     fun animate() {
         binding.root.post {
-            val parent = binding.buttonAddSupplier.parent as ViewGroup
+            val parent = binding.supplierScrollView.parent as ViewGroup
             val transition = TransitionInflater.from(this).inflateTransition(R.transition.scene_enter)
 
             transition.addTarget(binding.toolbarAdd)
-            transition.addTarget(binding.buttonAddSupplier)
+            transition.addTarget(binding.supplierScrollView)
 
             TransitionManager.beginDelayedTransition(parent, transition)
 
             binding.toolbarAdd.visibility = View.VISIBLE
-            binding.buttonAddSupplier.visibility = View.VISIBLE
+            binding.supplierScrollView.visibility = View.VISIBLE
         }
     }
 }
