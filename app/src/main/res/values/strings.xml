@@ -68,4 +68,5 @@
     <string name="location">Location</string>
     <string name="location_not_set">Location Not Set</string>
     <string name="button_set_location">Set Location</string>
+    <string name="location_format">Lat: %1$.4f, Lng: %2$.4f</string>
 </resources>

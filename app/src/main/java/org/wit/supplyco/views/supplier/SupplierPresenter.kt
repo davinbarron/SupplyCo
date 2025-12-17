@@ -6,9 +6,12 @@ import android.net.Uri
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import org.wit.supplyco.main.MainApp
+import org.wit.supplyco.models.Location
 import org.wit.supplyco.models.SupplierModel
 import org.wit.supplyco.models.SupplierRepo
+import org.wit.supplyco.views.editlocation.EditLocationView
 import timber.log.Timber.i
 
 class SupplierPresenter(private val view: SupplierView) {
@@ -16,7 +19,7 @@ class SupplierPresenter(private val view: SupplierView) {
     private var supplier = SupplierModel()
     private var edit = false
     private val app: MainApp = view.application as MainApp
-    private val repo: SupplierRepo = app.suppliers
+    private lateinit var mapIntentLauncher: ActivityResultLauncher<Intent>
     private lateinit var imageIntentLauncher: ActivityResultLauncher<PickVisualMediaRequest>
 
     init {
@@ -24,9 +27,12 @@ class SupplierPresenter(private val view: SupplierView) {
             edit = true
             supplier = view.intent.extras?.getParcelable("supplier_edit")!!
             view.showSupplier(supplier)
+            view.showLocation(supplier)
         }
         registerImagePickerCallback()
+        registerMapCallback()
     }
+
 
     fun doAddOrSave(name: String, desc: String, contact: String, email: String, address: String) {
         if (name.isNotEmpty() && desc.isNotEmpty() && contact.isNotEmpty() && email.isNotEmpty() && address.isNotEmpty()) {
@@ -39,10 +45,10 @@ class SupplierPresenter(private val view: SupplierView) {
             }
 
             if (edit) {
-                repo.update(supplier)
+                app.suppliers.update(supplier)
                 view.showMessage("Supplier updated successfully!")
             } else {
-                repo.create(supplier)
+                app.suppliers.create(supplier)
                 view.showMessage("Supplier added successfully!")
             }
             view.closeWithResult(Activity.RESULT_OK)
@@ -52,7 +58,7 @@ class SupplierPresenter(private val view: SupplierView) {
     }
 
     fun doDelete() {
-        repo.delete(supplier)
+        app.suppliers.delete(supplier)
         view.showMessage("Supplier deleted successfully!")
         view.closeWithResult(Activity.RESULT_OK)
     }
@@ -66,6 +72,18 @@ class SupplierPresenter(private val view: SupplierView) {
             .setMediaType(ActivityResultContracts.PickVisualMedia.ImageOnly)
             .build()
         imageIntentLauncher.launch(request)
+    }
+
+    fun doSetLocation() {
+        val location = Location(52.245696, -7.139102, 15f)
+        if (supplier.zoom != 0f) {
+            location.lat = supplier.lat
+            location.lng = supplier.lng
+            location.zoom = supplier.zoom
+        }
+        val launcherIntent = Intent(view, EditLocationView::class.java)
+            .putExtra("location", location)
+        mapIntentLauncher.launch(launcherIntent)
     }
 
     private fun registerImagePickerCallback() {
@@ -87,5 +105,22 @@ class SupplierPresenter(private val view: SupplierView) {
                 e.printStackTrace()
             }
         }
+    }
+
+    private fun registerMapCallback() {
+        mapIntentLauncher =
+            view.registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                if (result.resultCode == AppCompatActivity.RESULT_OK && result.data != null) {
+                    val location = result.data!!.extras?.getParcelable<Location>("location")!!
+                    i("Location == $location")
+                    supplier.lat = location.lat
+                    supplier.lng = location.lng
+                    supplier.zoom = location.zoom
+
+                    app.suppliers.update(supplier)
+
+                    view.showLocation(supplier)
+                }
+            }
     }
 }

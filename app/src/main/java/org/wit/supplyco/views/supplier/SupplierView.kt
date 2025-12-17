@@ -40,6 +40,10 @@ class SupplierView : AppCompatActivity() {
             )
         }
 
+        binding.buttonSetLocation.setOnClickListener {
+            presenter.doSetLocation()
+        }
+
         binding.buttonDeleteSupplier.setOnClickListener {
             presenter.doDelete()
         }
@@ -75,6 +79,15 @@ class SupplierView : AppCompatActivity() {
         binding.supplierActivityTitle.text = getString(R.string.toolbar_title_supplier_details)
         binding.buttonDeleteSupplier.visibility = View.VISIBLE
         Picasso.get().load(supplier.image).into(binding.supplierImage)
+        showLocation(supplier)
+    }
+
+    fun showLocation(supplier: SupplierModel) {
+        if (supplier.lat != 0.0 && supplier.lng != 0.0) {
+            binding.supplierLocation.text = getString(R.string.location_format, supplier.lat, supplier.lng)
+        } else {
+            binding.supplierLocation.text = getString(R.string.location_not_set)
+        }
     }
 
     fun updateImage(image: Uri) {
