@@ -2,6 +2,7 @@ package org.wit.supplyco.views.settings
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.material.snackbar.Snackbar
 import org.wit.supplyco.R
 import org.wit.supplyco.databinding.ActivitySettingsBinding
@@ -35,6 +36,15 @@ class SettingsView : BaseDrawerActivity() {
             binding.buttonDeleteAll.setOnClickListener {
                 presenter.doDeleteAllSuppliers()
             }
+        }
+
+        // https://developer.android.com/develop/ui/views/theming/darktheme
+        val currentMode = AppCompatDelegate.getDefaultNightMode()
+        binding.switchNightMode.isChecked = (currentMode == AppCompatDelegate.MODE_NIGHT_YES)
+
+        //https://developer.android.com/reference/android/widget/CompoundButton.OnCheckedChangeListener
+        binding.switchNightMode.setOnCheckedChangeListener { _, isChecked ->
+            presenter.doToggleNightMode(isChecked)
         }
     }
 
