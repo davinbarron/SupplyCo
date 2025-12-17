@@ -65,4 +65,7 @@
     <string name="toolbar_title_supplier_map">Supplier Map</string>
     <string name="map_content_description">Supplier Location Map</string>
     <string name="supplier_image_description">Supplier Image</string>
+    <string name="location">Location</string>
+    <string name="location_not_set">Location Not Set</string>
+    <string name="button_set_location">Set Location</string>
 </resources>
