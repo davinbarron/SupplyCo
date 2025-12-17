@@ -5,15 +5,27 @@
 <!--https://www.schemecolor.com/black-and-blue-fashion.php-->
 
 <resources>
+    <!-- Brand -->
     <color name="colourPrimary">#0E4574</color>
+    <color name="colourOnPrimary">#FFFFFF</color>
+
     <color name="colourSecondary">#76A2AA</color>
+    <color name="colourOnSecondary">#000000</color>
 
+    <!-- Background -->
     <color name="colourBackground">#FAF8D0</color>
+    <color name="colourOnBackground">#0E4574</color>
 
+    <color name="colourSurface">#FFFFFF</color>
+    <color name="colourOnSurface">#0D0804</color>
+
+    <!-- Error -->
+    <color name="colourError">#FF474C</color>
+    <color name="colourOnError">#FFFFFF</color>
+
+    <!-- Extras -->
     <color name="colourOne">#FFFFFF</color>
     <color name="colourTwo">#E2D9C7</color>
     <color name="colourThree">#AF7812</color>
     <color name="colourFour">#0D0804</color>
-
-    <color name="colourError">#FF474C</color>
 </resources>

@@ -1,13 +1,25 @@
 <resources>
-    <color name="colourPrimary">#0D0804</color>
-    <color name="colourSecondary">#FAF8D0</color>
+    <!-- Brand -->
+    <color name="colourPrimary">#76A2AA</color>
+    <color name="colourOnPrimary">#000000</color>
 
-    <color name="colourBackground">#121212</color>
+    <color name="colourSecondary">#0E4574</color>
+    <color name="colourOnSecondary">#FAF8D0</color>
 
-    <color name="colourOne">#76A2AA</color>
-    <color name="colourTwo">#0E4574</color>
-    <color name="colourThree">#AF7812</color>
-    <color name="colourFour">#FFFFFF</color>
+    <!-- Background -->
+    <color name="colourBackground">#0D0804</color>
+    <color name="colourOnBackground">#FAF8D0</color>
 
+    <color name="colourSurface">#121212</color>
+    <color name="colourOnSurface">#FAF8D0</color>
+
+    <!-- Error -->
     <color name="colourError">#FF474C</color>
+    <color name="colourOnError">#000000</color>
+
+    <!-- Extras -->
+    <color name="colourOne">#FFFFFF</color>
+    <color name="colourTwo">#E2D9C7</color>
+    <color name="colourThree">#AF7812</color>
+    <color name="colourFour">#0D0804</color>
 </resources>
