@@ -41,7 +41,7 @@
         <activity android:name=".views.item.ItemView" />
         <activity android:name=".views.settings.SettingsView" />
         <activity
-                android:name=".views.map.MapsActivity"
+                android:name=".views.suppliermap.SupplierMapPresenter"
                 android:exported="false"
                 android:label="@string/title_activity_maps" />
     </application>

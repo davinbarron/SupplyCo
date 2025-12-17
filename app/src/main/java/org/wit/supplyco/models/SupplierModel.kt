@@ -13,5 +13,6 @@ data class SupplierModel (
     var address: String = "",
     var image: String? = null,
     var lat: Double = 0.0,
-    var lng: Double = 0.0
+    var lng: Double = 0.0,
+    var zoom: Float = 12f
 ) : Parcelable
