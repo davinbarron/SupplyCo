@@ -25,7 +25,8 @@ class SupplierMapView : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
         setSupportActionBar(binding.toolbarMap)
 
         presenter = SupplierMapPresenter(this)
-        contentBinding = ContentSupplierMapBinding.bind(binding.root)
+
+        contentBinding = binding.contentSupplierMap
 
         contentBinding.mapView.onCreate(savedInstanceState)
         contentBinding.mapView.getMapAsync {

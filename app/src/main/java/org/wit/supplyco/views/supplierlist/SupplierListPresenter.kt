@@ -9,6 +9,7 @@ import org.wit.supplyco.models.SupplierModel
 import org.wit.supplyco.views.itemlist.ItemListView
 import org.wit.supplyco.views.settings.SettingsView
 import org.wit.supplyco.views.supplier.SupplierView
+import org.wit.supplyco.views.suppliermap.SupplierMapView
 
 class SupplierListPresenter(val view: SupplierListView) {
 
@@ -16,11 +17,13 @@ class SupplierListPresenter(val view: SupplierListView) {
     private val repo = app.suppliers
 
     private lateinit var refreshIntentLauncher: ActivityResultLauncher<Intent>
+    private lateinit var mapIntentLauncher : ActivityResultLauncher<Intent>
     private lateinit var settingsIntentLauncher: ActivityResultLauncher<Intent>
     private var position: Int = 0
 
     init {
         registerRefreshCallback()
+        registerMapCallback()
         registerSettingsCallback()
     }
 
@@ -49,6 +52,11 @@ class SupplierListPresenter(val view: SupplierListView) {
         view.startActivity(launcherIntent)
     }
 
+    fun doShowSuppliersMap() {
+        val launcherIntent = Intent(view, SupplierMapView::class.java)
+        mapIntentLauncher.launch(launcherIntent)
+    }
+
     fun doOpenSettings() {
         val launcherIntent = Intent(view, SettingsView::class.java)
         launcherIntent.putExtra("settings_mode", "suppliers")
@@ -70,4 +78,11 @@ class SupplierListPresenter(val view: SupplierListView) {
         settingsIntentLauncher =
             view.registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { }
     }
+
+    private fun registerMapCallback() {
+        mapIntentLauncher =
+            view.registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+            {  }
+    }
+
 }

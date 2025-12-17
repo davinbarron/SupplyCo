@@ -34,7 +34,9 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <include layout="@layout/content_supplier_map" />
+        <include
+                android:id="@+id/contentSupplierMap"
+                layout="@layout/content_supplier_map" />
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
