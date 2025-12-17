@@ -56,6 +56,7 @@ class ItemListView : BaseDrawerActivity(), ItemListener {
 
         menu.findItem(R.id.item_add)?.isVisible = true
         menu.findItem(R.id.item_edit_supplier)?.isVisible = true
+        menu.findItem(R.id.item_map)?.isVisible = false
 
         return super.onCreateOptionsMenu(menu)
     }

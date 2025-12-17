@@ -52,8 +52,8 @@
                     <ImageView
                             android:id="@+id/supplierImage"
                             app:srcCompat="@drawable/ic_launcher_background"
-                            style="@style/ImageView" />
-
+                            style="@style/ImageView"
+                            android:contentDescription="@string/supplier_image_description"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -97,7 +97,6 @@
                                 android:id="@+id/supplierDescription"
                                 android:hint="@string/hint_supplierDescription"
                                 style="@style/EditText" />
-
                     </LinearLayout>
                 </LinearLayout>
 
@@ -141,7 +140,6 @@
                                 android:hint="@string/hint_supplierEmail"
                                 style="@style/EditText" />
                     </LinearLayout>
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -152,17 +150,33 @@
                     <LinearLayout
                             android:orientation="vertical"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                            android:layout_height="match_parent"
+                            android:paddingHorizontal="5dp">
 
                         <TextView
                                 android:text="@string/address"
-                                style="@style/HeadingTextView"
-                                android:paddingHorizontal="5dp" />
+                                style="@style/HeadingTextView" />
 
                         <EditText
                                 android:id="@+id/supplierAddress"
                                 android:hint="@string/hint_supplierAddress"
                                 style="@style/EditText" />
+
+                        <TextView
+                                android:text="@string/location"
+                                style="@style/HeadingTextView"
+                                android:layout_marginTop="12dp"/>
+
+                        <TextView
+                                android:id="@+id/supplierLocation"
+                                style="@style/EditText"
+                                android:text="@string/location_not_set" />
+
+                        <Button
+                                android:id="@+id/buttonSetLocation"
+                                android:text="@string/button_set_location"
+                                style="@style/SecondaryButton"
+                                app:cornerRadius="10dp"/>
                     </LinearLayout>
                 </LinearLayout>
 

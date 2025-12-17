@@ -60,6 +60,7 @@ class SupplierListView : BaseDrawerActivity(), SupplierListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.item_add -> presenter.doAddSupplier()
+            R.id.item_map -> presenter.doShowSuppliersMap()
             R.id.item_settings -> presenter.doOpenSettings()
         }
         return super.onOptionsItemSelected(item)
