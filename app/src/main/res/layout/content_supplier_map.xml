@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <com.google.android.gms.maps.MapView
+            android:id="@+id/mapView"
+            style="@style/MapView" />
+
+    <LinearLayout
+            android:id="@+id/supplierInfoPanel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colourOne"
+            android:padding="12dp"
+            android:layout_gravity="bottom"
+            android:elevation="4dp">
+
+        <TextView
+                android:id="@+id/currentTitle"
+                style="@style/HeadingTextView"
+                android:text="@string/name"/>
+
+        <TextView
+                android:id="@+id/currentDescription"
+                style="@style/EditText"
+                android:text="@string/description"/>
+
+        <ImageView
+                android:id="@+id/currentImage"
+                style="@style/MapImageView"
+                android:contentDescription="@string/supplier_image_description" />
+    </LinearLayout>
+</FrameLayout>

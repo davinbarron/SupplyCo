@@ -62,4 +62,7 @@
     <string name="start_scene">Start Scene</string>
     <string name="end_scene">End Scene</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="toolbar_title_supplier_map">Supplier Map</string>
+    <string name="map_content_description">Supplier Location Map</string>
+    <string name="supplier_image_description">Supplier Image</string>
 </resources>

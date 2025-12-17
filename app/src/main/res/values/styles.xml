@@ -116,4 +116,19 @@
         <item name="android:scaleType">centerCrop</item>
     </style>
 
+    <style name="MapImageView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">150dp</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:adjustViewBounds">true</item>
+    </style>
+
+    <style name="MapView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/colourBackground</item>
+        <item name="android:contentDescription">@string/map_content_description</item>
+    </style>
+
 </resources>

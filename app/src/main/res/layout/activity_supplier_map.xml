@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="org.wit.supplyco.views.suppliermap.SupplierMapView">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colourOne"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBarLayout"
+                android:fitsSystemWindows="true"
+                app:elevation="0dip"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                style="@style/AppBarLayout">
+
+            <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbarMap"
+                    style="@style/ToolbarLayout">
+
+                <TextView
+                        android:id="@+id/mapActivityTitle"
+                        android:text="@string/toolbar_title_supplier_map"
+                        style="@style/ToolbarTextView" />
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <include layout="@layout/content_supplier_map" />
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
